@@ -61,99 +61,90 @@ My research interest includes neural machine translation and computer vision. I 
 
 ### [{{ post.title }}]({{ post.url | relative_url }})
 
-<div style="margin-bottom: 10px;">
+<div style="margin-bottom: 12px; color: #666; font-size: 0.9rem;">
+  <!-- 作者与日期 -->
   <span style="font-weight: bold; color: #333;">{{ site.author.name }}</span>
-  <span style="color: #666; margin: 0 10px;">|</span>
-  <span style="color: #666;">{{ post.date | date: "%Y年%m月%d日" }}</span>
-  
-  {% if post.categories %}
-    <span style="color: #666; margin: 0 10px;">|</span>
-    <span style="color: #666;">分类:</span>
-    {% for category in post.categories %}
-      <span style="background-color: #e5e7eb; color: #374151; padding: 2px 8px; border-radius: 4px; margin-left: 5px; font-size: 0.85rem;">
-        {{ category }}
-      </span>
-    {% endfor %}
-  {% endif %}
+  <span style="margin: 0 10px;">|</span>
+  <span>{{ post.date | date: "%Y年%m月%d日" }}</span>
 </div>
 
-{{ post.excerpt | default: post.content | strip_html | truncatewords: 50 }}
+<!-- 分类显示：循环所有，不加限制 -->
+{% if post.categories %}
+<div style="margin-bottom: 8px;">
+  <span style="color: #666; font-size: 0.9rem;">分类：</span>
+  {% for category in post.categories %}
+  <span style="display: inline-block; background-color: #e5e7eb; color: #374151; padding: 4px 10px; margin: 2px 5px 2px 0; border-radius: 12px; font-size: 0.85rem; line-height: 1;">
+    {{ category }}
+  </span>
+  {% endfor %}
+</div>
+{% endif %}
 
-<p><a href="{{ post.url | relative_url }}" style="color: #3b82f6; font-weight: 500; text-decoration: none;">阅读全文 →</a></p>
+<!-- 标签显示：循环所有 -->
+{% if post.tags %}
+<div style="margin-bottom: 12px;">
+  <span style="color: #666; font-size: 0.9rem;">标签：</span>
+  {% for tag in post.tags %}
+  <span style="display: inline-block; background-color: #dbeafe; color: #1e40af; padding: 4px 10px; margin: 2px 5px 2px 0; border-radius: 12px; font-size: 0.85rem; line-height: 1;">
+    #{{ tag }}
+  </span>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- 文章摘要 -->
+<div style="color: #4b5563; line-height: 1.6; margin-bottom: 15px;">
+{{ post.excerpt | default: post.content | strip_html | truncatewords: 50 }}
+</div>
+
+<!-- 阅读全文链接 -->
+<p>
+<a href="{{ post.url | relative_url }}" style="color: #3b82f6; font-weight: 500; text-decoration: none; font-size: 0.95rem;">
+阅读全文 →
+</a>
+</p>
+
 </div>
 </div>
 {% endfor %}
 
-[查看所有博客文章 →](/blog/)
-
-<!-- 如果没有博客文章，显示提示 -->
+<!-- 提示语和链接 -->
 {% if site.posts.size == 0 %}
-<div class='paper-box'>
-<div class='paper-box-text'>
 <p>目前还没有博客文章，敬请期待！</p>
-</div>
-</div>
 {% endif %}
 
+<p style="text-align: center; margin-top: 2rem;">
+<a href="/blog/" style="display: inline-block; padding: 0.6rem 1.5rem; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;">
+查看所有博客文章 →
+</a>
+</p>
+
 <style>
-.badge {
-  display: inline-block;
-  padding: 0.25em 0.6em;
-  font-size: 0.75em;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0.25rem;
-  background-color: #3b82f6;
-  margin-right: 5px;
-}
-
-.badge:last-child {
-  margin-right: 0;
-}
-
+/* 卡片整体样式 */
 .paper-box {
-  display: flex;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  border: 1px solid #eaeaea;
-  border-radius: 8px;
+  background: white;
+  border-radius: 10px;
+  padding: 1.8rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #3b82f6;
   transition: all 0.3s ease;
 }
-
 .paper-box:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
-
-.paper-box-text {
-  flex: 1;
-}
-
 .paper-box-text h4 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
 }
-
-.paper-box-text small {
-  color: #6b7280;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.paper-box-text a[href*="阅读全文"] {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #3b82f6;
-  font-weight: 600;
+.paper-box-text h4 a {
+  color: #1e3a8a;
   text-decoration: none;
 }
-
-.paper-box-text a[href*="阅读全文"]:hover {
-  text-decoration: underline;
+.paper-box-text h4 a:hover {
+  color: #3b82f6;
 }
 </style>
 
