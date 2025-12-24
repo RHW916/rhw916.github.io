@@ -2,201 +2,64 @@
 layout: default
 ---
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<!-- 继承主题的完整框架（页眉、侧边栏），并专注于文章内容 -->
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   
-  <!-- 文章头部信息 -->
+  <!-- 文章标题区 -->
   <header class="post__header">
-    <h1 class="post__title" itemprop="headline name">
+    <h1 class="post__title p-name" itemprop="name headline">
       {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
     </h1>
-    
-    <div class="post__meta">
+    <p class="page__meta">
       <!-- 发布日期 -->
-      <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        <i class="fas fa-calendar-alt"></i> {{ page.date | date: "%Y年%m月%d日" }}
+      <i class="far fa-calendar-alt" aria-hidden="true"></i> 
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%Y年%m月%d日" }}
       </time>
       <!-- 分类 -->
       {% if page.categories.size > 0 %}
-      <span class="post__categories">
-        <i class="fas fa-folder-open"></i>
-        {% for category in page.categories %}
-          <span class="post__category" itemprop="keywords">{{ category }}</span>{% unless forloop.last %}, {% endunless %}
-        {% endfor %}
-      </span>
+        • <i class="fas fa-folder-open" aria-hidden="true"></i> 
+        <span itemprop="keywords">
+          {% for category in page.categories %}
+            <a href="{{ category | slugify | prepend: '/categories/#' | relative_url }}" class="page__taxonomy-item" rel="tag">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </span>
       {% endif %}
       <!-- 标签 -->
       {% if page.tags.size > 0 %}
-      <span class="post__tags">
-        <i class="fas fa-tags"></i>
-        {% for tag in page.tags %}
-          <span class="post__tag" itemprop="keywords">#{{ tag }}</span>{% unless forloop.last %} {% endunless %}
-        {% endfor %}
-      </span>
+        • <i class="fas fa-tags" aria-hidden="true"></i>
+        <span itemprop="keywords">
+          {% for tag in page.tags %}
+            <a href="{{ tag | slugify | prepend: '/tags/#' | relative_url }}" class="page__taxonomy-item" rel="tag">#{{ tag }}</a>{% unless forloop.last %} {% endfor %}
+          {% endfor %}
+        </span>
       {% endif %}
-    </div>
+    </p>
   </header>
 
-  <!-- 文章正文内容区域 -->
-  <section class="post__content" itemprop="articleBody">
+  <!-- 文章正文 -->
+  <section class="post__content e-content" itemprop="articleBody">
     {{ content }}
   </section>
 
-  <!-- 文章页脚（导航等） -->
+  <!-- 文章页脚：导航 -->
   <footer class="post__footer">
-    
-    <!-- 上一篇/下一篇导航 -->
-    <nav class="post__pagination">
+    <nav class="pagination">
       {% if page.previous.url %}
-      <a class="post__pagination-item post__pagination--prev" href="{{ page.previous.url | relative_url }}">
-        <span class="post__pagination-arrow">←</span>
-        <span class="post__pagination-title">{{ page.previous.title | markdownify | strip_html | truncate: 30 }}</span>
-      </a>
+        <a href="{{ page.previous.url | relative_url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">上一篇：{{ page.previous.title | truncatewords: 8 }}</a>
+      {% else %}
+        <a href="#" class="pagination--pager disabled">这是第一篇</a>
       {% endif %}
-      
       {% if page.next.url %}
-      <a class="post__pagination-item post__pagination--next" href="{{ page.next.url | relative_url }}">
-        <span class="post__pagination-title">{{ page.next.title | markdownify | strip_html | truncate: 30 }}</span>
-        <span class="post__pagination-arrow">→</span>
-      </a>
+        <a href="{{ page.next.url | relative_url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">下一篇：{{ page.next.title | truncatewords: 8 }}</a>
+      {% else %}
+        <a href="#" class="pagination--pager disabled">这是最后一篇</a>
       {% endif %}
     </nav>
-    
-    <!-- 返回博客列表的链接 -->
-    <div class="post__back-link">
-      <a href="{{ '/blog/' | relative_url }}">
-        <i class="fas fa-list"></i> 返回博客文章列表
-      </a>
+    <div class="page__footer-back-to-top">
+      <a href="#site-nav">↑ 返回顶部</a> • 
+      <a href="{{ '/blog/' | relative_url }}">← 返回博客列表</a>
     </div>
-    
   </footer>
 
 </article>
-
-<style>
-/* 增强文章内容样式 */
-.post__header {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eaeaea;
-}
-.post__title {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  font-size: 2.2rem;
-  line-height: 1.2;
-  color: #1e293b;
-}
-.post__meta {
-  color: #64748b;
-  font-size: 0.95rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.2rem;
-}
-.post__meta i {
-  margin-right: 0.4rem;
-  color: #94a3b8;
-}
-.post__category, .post__tag {
-  background-color: #f1f5f9;
-  padding: 0.2em 0.6em;
-  border-radius: 4px;
-  font-size: 0.85em;
-  margin: 0 0.1em;
-}
-.post__tag {
-  background-color: #e0f2fe;
-  color: #0369a1;
-}
-.post__content {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #334155;
-}
-.post__content h2 {
-  margin-top: 2.2rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e2e8f0;
-  color: #1e293b;
-}
-.post__content h3 {
-  margin-top: 1.8rem;
-  color: #374151;
-}
-.post__content a {
-  color: #3b82f6;
-  text-decoration: none;
-  border-bottom: 1px dashed #93c5fd;
-}
-.post__content a:hover {
-  color: #2563eb;
-  border-bottom-style: solid;
-}
-.post__content code {
-  background-color: #f8fafc;
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  color: #dc2626;
-}
-.post__content pre {
-  background-color: #0f172a;
-  color: #e2e8f0;
-  padding: 1.2rem;
-  border-radius: 8px;
-  overflow-x: auto;
-  line-height: 1.5;
-  margin: 1.5rem 0;
-}
-.post__content blockquote {
-  border-left: 4px solid #cbd5e1;
-  padding-left: 1.2rem;
-  margin-left: 0;
-  color: #475569;
-  font-style: italic;
-}
-/* 页脚导航样式 */
-.post__footer {
-  margin-top: 3.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid #e5e7eb;
-}
-.post__pagination {
-  display: flex;
-  justify-content: space-between;
-}
-.post__pagination-item {
-  display: inline-flex;
-  align-items: center;
-  max-width: 45%;
-  padding: 0.8rem 1.2rem;
-  background-color: #f8fafc;
-  border-radius: 8px;
-  color: #475569;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-.post__pagination-item:hover {
-  background-color: #e2e8f0;
-  color: #1e293b;
-  transform: translateY(-2px);
-}
-.post__pagination-arrow {
-  font-weight: bold;
-  margin: 0 0.5rem;
-}
-.post__back-link {
-  text-align: center;
-  margin-top: 2rem;
-}
-.post__back-link a {
-  color: #64748b;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-.post__back-link a:hover {
-  color: #3b82f6;
-}
-</style>
