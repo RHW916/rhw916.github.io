@@ -60,17 +60,26 @@ My research interest includes neural machine translation and computer vision. I 
 <div class='paper-box-text' markdown="1">
 
 ### [{{ post.title }}]({{ post.url | relative_url }})
-<small>**{{ site.author.name }}** | {{ post.date | date: "%Y年%m月%d日" }} | 
-{% if post.categories %}
-  {% for category in post.categories %}
-  <span class="badge">{{ category }}</span>
-  {% endfor %}
-{% endif %}
-</small>
+
+<div style="margin-bottom: 10px;">
+  <span style="font-weight: bold; color: #333;">{{ site.author.name }}</span>
+  <span style="color: #666; margin: 0 10px;">|</span>
+  <span style="color: #666;">{{ post.date | date: "%Y年%m月%d日" }}</span>
+  
+  {% if post.categories %}
+    <span style="color: #666; margin: 0 10px;">|</span>
+    <span style="color: #666;">分类:</span>
+    {% for category in post.categories %}
+      <span style="background-color: #e5e7eb; color: #374151; padding: 2px 8px; border-radius: 4px; margin-left: 5px; font-size: 0.85rem;">
+        {{ category }}
+      </span>
+    {% endfor %}
+  {% endif %}
+</div>
 
 {{ post.excerpt | default: post.content | strip_html | truncatewords: 50 }}
 
-[**阅读全文 →**]({{ post.url | relative_url }})
+<p><a href="{{ post.url | relative_url }}" style="color: #3b82f6; font-weight: 500; text-decoration: none;">阅读全文 →</a></p>
 </div>
 </div>
 {% endfor %}
