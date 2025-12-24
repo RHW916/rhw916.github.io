@@ -23,7 +23,7 @@ redirect_from:
   简历下载：
   <a href="/assets/CV_CN.pdf" target="_blank" class="cv-link">中文版 →</a>
   <a href="/assets/CV_EN.pdf" target="_blank" class="cv-link">English →</a>
-</span>] 我的研究兴趣集中在**人工智能、多智能体系统、分布式计算和机器学习模型优化**等领域。
+</span>] 我的研究兴趣集中在**人工智能、多智能体系统和大语言模型优化**等领域。
 
 ### 🔬 研究方向
 1. **多智能体系统与分布式计算**
