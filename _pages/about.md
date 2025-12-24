@@ -19,7 +19,7 @@ redirect_from:
 
 ## 👋 关于我
 
-我是北京邮电大学理学院数学与应用数学专业的本科生，将于2025年毕业。我的研究兴趣集中在**人工智能、多智能体系统、分布式计算和机器学习模型优化**等领域。
+我是北京邮电大学理学院数学与应用数学专业的本科生。[查看完整简历 →中文→EN]我的研究兴趣集中在**人工智能、多智能体系统、分布式计算和机器学习模型优化**等领域。
 
 ### 🔬 研究方向
 1. **多智能体系统与分布式计算**
@@ -37,7 +37,6 @@ redirect_from:
    - 神经信号解码与应用
    - 医学数据分析
 
-[查看完整简历 →](/cv/)
 
 My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
 
