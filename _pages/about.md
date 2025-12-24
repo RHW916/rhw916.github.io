@@ -17,8 +17,31 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+## 👋 关于我
 
+我是北京邮电大学理学院数学与应用数学专业的本科生，将于2025年毕业。我的研究兴趣集中在**人工智能、多智能体系统、分布式计算和机器学习模型优化**等领域。
+
+### 🎓 教育背景
+- **北京邮电大学** | 数学与应用数学 | 理学学士 (2021-2025)
+  - GPA: 3.56/4.0 (专业排名: 4/27)
+  - 主要课程：数学分析、高等代数、概率论、常微分方程、抽象代数、泛函分析、数据结构、机器学习与数据挖掘等
+  - 奖项：国家励志奖学金、校级三等奖学金
+
+### 🔬 研究方向
+1. **多智能体系统与分布式计算**
+   - 拜占庭鲁棒的协同定位与目标跟踪
+   - 分布式算法设计与分析
+   - 网络安全与容错机制
+
+2. **机器学习与模型优化**
+   - 大语言模型压缩与高效微调
+   - 低资源场景下的模型适配
+   - 时序数据分析与预测
+
+3. **信号处理与神经科学**
+   - 脑电信号频域分析
+   - 神经信号解码与应用
+   - 医学数据分析
 My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
 
 
