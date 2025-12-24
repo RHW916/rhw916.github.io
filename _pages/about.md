@@ -53,6 +53,30 @@ My research interest includes neural machine translation and computer vision. I 
 
 在这里分享我的研究心得、学习笔记和项目经验。
 
+### 🔬 最新博客文章
+
+{% for post in site.posts limit:3 %}
+<div class='paper-box'>
+<div class='paper-box-text' markdown="1">
+
+#### [{{ post.title }}]({{ post.url | relative_url }})
+<small>**{{ site.author.name }}** | {{ post.date | date: "%Y年%m月%d日" }} | 
+{% if post.categories %}
+  {% for category in post.categories %}
+    <span class="badge">{{ category }}</span>
+  {% endfor %}
+{% endif %}
+</small>
+
+{{ post.excerpt | default: post.content | strip_html | truncatewords: 50 }}
+
+[**阅读全文 →**]({{ post.url | relative_url }})
+</div>
+</div>
+{% endfor %}
+
+### 📚 更多文章
+[查看所有博客文章 →](/blog/)
 
 # 📝 Publications 
 
