@@ -49,17 +49,17 @@ My research interest includes neural machine translation and computer vision. I 
 - *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.
 
-## 📝 Blogs
+# 📝 Blogs
 
 在这里分享我的研究心得、学习笔记和项目经验。
 
-### 🔬 最新博客文章
+## 🔬 最新博客文章
 
 {% for post in site.posts limit:3 %}
 <div class='paper-box'>
 <div class='paper-box-text' markdown="1">
 
-#### [{{ post.title }}]({{ post.url | relative_url }})
+### [{{ post.title }}]({{ post.url | relative_url }})
 <small>**{{ site.author.name }}** | {{ post.date | date: "%Y年%m月%d日" }} | 
 {% if post.categories %}
   {% for category in post.categories %}
@@ -75,7 +75,7 @@ My research interest includes neural machine translation and computer vision. I 
 </div>
 {% endfor %}
 
-### 📚 更多文章
+## 📚 更多文章
 [查看所有博客文章 →](/blog/)
 
 # 📝 Publications 
