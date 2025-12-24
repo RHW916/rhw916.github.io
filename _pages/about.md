@@ -63,7 +63,7 @@ My research interest includes neural machine translation and computer vision. I 
 <small>**{{ site.author.name }}** | {{ post.date | date: "%Y年%m月%d日" }} | 
 {% if post.categories %}
   {% for category in post.categories %}
-    <span class="badge">{{ category }}</span>
+  <span class="badge">{{ category }}</span>
   {% endfor %}
 {% endif %}
 </small>
@@ -75,8 +75,78 @@ My research interest includes neural machine translation and computer vision. I 
 </div>
 {% endfor %}
 
-## 📚 更多文章
 [查看所有博客文章 →](/blog/)
+
+<!-- 如果没有博客文章，显示提示 -->
+{% if site.posts.size == 0 %}
+<div class='paper-box'>
+<div class='paper-box-text'>
+<p>目前还没有博客文章，敬请期待！</p>
+</div>
+</div>
+{% endif %}
+
+<style>
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #3b82f6;
+  margin-right: 5px;
+}
+
+.badge:last-child {
+  margin-right: 0;
+}
+
+.paper-box {
+  display: flex;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.paper-box:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.paper-box-text {
+  flex: 1;
+}
+
+.paper-box-text h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.paper-box-text small {
+  color: #6b7280;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.paper-box-text a[href*="阅读全文"] {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #3b82f6;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.paper-box-text a[href*="阅读全文"]:hover {
+  text-decoration: underline;
+}
+</style>
 
 # 📝 Publications 
 
