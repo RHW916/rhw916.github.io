@@ -19,8 +19,11 @@ redirect_from:
 
 ## 👋 关于我
 
-我是北京邮电大学理学院数学与应用数学专业的本科生。[查看<span class="resume-link"><a href="/assets/CV_CN.pdf" target="_blank" title="查看中文简历">中</a><a href="/assets/CV_EN.pdf" target="_blank" title="查看英文简历">英</a></span>简历]
-[查看完整简历 →中文→EN]我的研究兴趣集中在**人工智能、多智能体系统、分布式计算和机器学习模型优化**等领域。
+我是北京邮电大学理学院数学与应用数学专业的本科生。<span class="resume-download">
+  简历下载：
+  <a href="/assets/CV_CN.pdf" target="_blank" class="cv-link">中文版 →</a>
+  <a href="/assets/CV_EN.pdf" target="_blank" class="cv-link">English →</a>
+</span>我的研究兴趣集中在**人工智能、多智能体系统、分布式计算和机器学习模型优化**等领域。
 
 ### 🔬 研究方向
 1. **多智能体系统与分布式计算**
