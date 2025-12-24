@@ -1,94 +1,202 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: 'zh-CN' }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* 在此处可以添加文章页专用的CSS样式 */
-        .post-content {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #2d3748;
-        }
-        .post-content h2 { margin-top: 2.5rem; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .post-content h3 { margin-top: 2rem; color: #374151; }
-        .post-content a { color: #3b82f6; text-decoration: none; border-bottom: 1px dashed; }
-        .post-content a:hover { color: #1d4ed8; border-bottom-style: solid; }
-        .post-content code { background-color: #f1f5f9; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; }
-        .post-content pre { background-color: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; }
-        .post-navigation { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; }
-        .post-taxonomy { margin: 1.5rem 0; }
-        .post-tag { display: inline-block; background-color: #dbeafe; color: #1e40af; padding: 0.3rem 0.8rem; margin: 0.2rem; border-radius: 15px; font-size: 0.9rem; }
-    </style>
-</head>
-<body>
-    <!-- 插入页眉 -->
-    {% include header.html %}
+---
+layout: default
+---
 
-    <!-- 根据设置显示左侧作者信息栏 -->
-    {% if page.author_profile or layout.author_profile %}
-        {% include author-profile.html %}
-    {% endif %}
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+  <!-- 文章头部信息 -->
+  <header class="post__header">
+    <h1 class="post__title" itemprop="headline name">
+      {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+    </h1>
+    
+    <div class="post__meta">
+      <!-- 发布日期 -->
+      <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        <i class="fas fa-calendar-alt"></i> {{ page.date | date: "%Y年%m月%d日" }}
+      </time>
+      <!-- 分类 -->
+      {% if page.categories.size > 0 %}
+      <span class="post__categories">
+        <i class="fas fa-folder-open"></i>
+        {% for category in page.categories %}
+          <span class="post__category" itemprop="keywords">{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      </span>
+      {% endif %}
+      <!-- 标签 -->
+      {% if page.tags.size > 0 %}
+      <span class="post__tags">
+        <i class="fas fa-tags"></i>
+        {% for tag in page.tags %}
+          <span class="post__tag" itemprop="keywords">#{{ tag }}</span>{% unless forloop.last %} {% endunless %}
+        {% endfor %}
+      </span>
+      {% endif %}
+    </div>
+  </header>
 
-    <main class="main-content" id="main" aria-label="Content">
-        <article class="post-article">
-            <header class="post-header">
-                <h1 class="post-title">{{ page.title }}</h1>
-                <div class="post-meta">
-                    <time datetime="{{ page.date | date_to_xmlschema }}">
-                        <i class="far fa-calendar"></i> {{ page.date | date: "%Y年%m月%d日" }}
-                    </time>
-                    {% if page.categories %}
-                    <span class="post-categories">
-                        <i class="far fa-folder"></i>
-                        {% for category in page.categories %}
-                            <span class="post-category">{{ category }}</span>
-                        {% endfor %}
-                    </span>
-                    {% endif %}
-                </div>
-                {% if page.tags %}
-                <div class="post-taxonomy">
-                    <i class="fas fa-tags"></i>
-                    {% for tag in page.tags %}
-                        <span class="post-tag">#{{ tag }}</span>
-                    {% endfor %}
-                </div>
-                {% endif %}
-            </header>
+  <!-- 文章正文内容区域 -->
+  <section class="post__content" itemprop="articleBody">
+    {{ content }}
+  </section>
 
-            <div class="post-content">
-                {{ content }}
-            </div>
+  <!-- 文章页脚（导航等） -->
+  <footer class="post__footer">
+    
+    <!-- 上一篇/下一篇导航 -->
+    <nav class="post__pagination">
+      {% if page.previous.url %}
+      <a class="post__pagination-item post__pagination--prev" href="{{ page.previous.url | relative_url }}">
+        <span class="post__pagination-arrow">←</span>
+        <span class="post__pagination-title">{{ page.previous.title | markdownify | strip_html | truncate: 30 }}</span>
+      </a>
+      {% endif %}
+      
+      {% if page.next.url %}
+      <a class="post__pagination-item post__pagination--next" href="{{ page.next.url | relative_url }}">
+        <span class="post__pagination-title">{{ page.next.title | markdownify | strip_html | truncate: 30 }}</span>
+        <span class="post__pagination-arrow">→</span>
+      </a>
+      {% endif %}
+    </nav>
+    
+    <!-- 返回博客列表的链接 -->
+    <div class="post__back-link">
+      <a href="{{ '/blog/' | relative_url }}">
+        <i class="fas fa-list"></i> 返回博客文章列表
+      </a>
+    </div>
+    
+  </footer>
 
-            <footer class="post-footer">
-                <!-- 上一篇/下一篇导航 -->
-                <nav class="post-navigation">
-                    {% if page.previous %}
-                    <a class="post-nav-prev" href="{{ page.previous.url | relative_url }}">
-                        <i class="fas fa-arrow-left"></i> {{ page.previous.title | truncate: 30 }}
-                    </a>
-                    {% endif %}
-                    {% if page.next %}
-                    <a class="post-nav-next" href="{{ page.next.url | relative_url }}">
-                        {{ page.next.title | truncate: 30 }} <i class="fas fa-arrow-right"></i>
-                    </a>
-                    {% endif %}
-                </nav>
-                <!-- 返回博客列表的链接 -->
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="{{ '/blog/' | relative_url }}" class="back-to-blog">
-                        <i class="fas fa-list"></i> 返回博客文章列表
-                    </a>
-                </div>
-            </footer>
-        </article>
-    </main>
+</article>
 
-    <!-- 插入页脚 -->
-    {% include footer.html %}
-</body>
-</html>
+<style>
+/* 增强文章内容样式 */
+.post__header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eaeaea;
+}
+.post__title {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  color: #1e293b;
+}
+.post__meta {
+  color: #64748b;
+  font-size: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem;
+}
+.post__meta i {
+  margin-right: 0.4rem;
+  color: #94a3b8;
+}
+.post__category, .post__tag {
+  background-color: #f1f5f9;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  margin: 0 0.1em;
+}
+.post__tag {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+.post__content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #334155;
+}
+.post__content h2 {
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  color: #1e293b;
+}
+.post__content h3 {
+  margin-top: 1.8rem;
+  color: #374151;
+}
+.post__content a {
+  color: #3b82f6;
+  text-decoration: none;
+  border-bottom: 1px dashed #93c5fd;
+}
+.post__content a:hover {
+  color: #2563eb;
+  border-bottom-style: solid;
+}
+.post__content code {
+  background-color: #f8fafc;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: #dc2626;
+}
+.post__content pre {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  padding: 1.2rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.5;
+  margin: 1.5rem 0;
+}
+.post__content blockquote {
+  border-left: 4px solid #cbd5e1;
+  padding-left: 1.2rem;
+  margin-left: 0;
+  color: #475569;
+  font-style: italic;
+}
+/* 页脚导航样式 */
+.post__footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+.post__pagination {
+  display: flex;
+  justify-content: space-between;
+}
+.post__pagination-item {
+  display: inline-flex;
+  align-items: center;
+  max-width: 45%;
+  padding: 0.8rem 1.2rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  color: #475569;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.post__pagination-item:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  transform: translateY(-2px);
+}
+.post__pagination-arrow {
+  font-weight: bold;
+  margin: 0 0.5rem;
+}
+.post__back-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+.post__back-link a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.post__back-link a:hover {
+  color: #3b82f6;
+}
+</style>
