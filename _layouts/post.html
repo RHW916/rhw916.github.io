@@ -73,6 +73,88 @@ layout: compress
           <!-- ===== 博客文章页脚区域结束 ===== -->
 
         </div>
+        <style>
+/* 1. 调整文章主标题大小 */
+.post .page__header .page__title {
+    font-size: 2.2rem; /* 调大标题字体，可根据感觉调整数值 */
+    margin-bottom: 0.5rem;
+}
+
+/* 2. 分别设置分类和标签的颜色 */
+.page__meta .page__taxonomy-item {
+    /* 默认样式（分类） */
+    background-color: #e9ecef; /* 浅灰色背景 */
+    color: #495057; /* 深灰色文字 */
+    padding: 0.25em 0.6em;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 0 0.1em;
+    display: inline-block;
+}
+/* 特别针对标签链接（href属性包含“tags”） */
+.page__meta a[href*="/tags/"] {
+    background-color: #dbeafe; /* 浅蓝色背景 */
+    color: #1e40af; /* 深蓝色文字 */
+}
+/* 鼠标悬停效果 */
+.page__meta .page__taxonomy-item:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+/* 3. 优化底部导航区域样式 */
+.page__footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dee2e6;
+}
+/* 调整分页导航容器 */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%; /* 防止过长 */
+    flex-wrap: wrap; /* 小屏幕时允许换行 */
+    gap: 0.5rem;
+}
+/* 分页按钮样式 */
+.pagination--pager {
+    flex: 1; /* 让两个按钮等宽 */
+    min-width: 140px; /* 设置最小宽度 */
+    max-width: 48%; /* 防止过长 */
+    padding: 0.75rem 1rem;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.pagination--pager:hover:not(.disabled) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    transform: translateY(-2px);
+}
+.pagination--pager.disabled {
+    color: #adb5bd;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+/* “返回博客列表”链接 */
+.page__footer-back {
+    text-align: center;
+    margin-top: 2rem;
+}
+.page__footer-back a {
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.page__footer-back a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+</style>
       </article>
     </div>
 
