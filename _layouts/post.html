@@ -12,7 +12,7 @@ layout: compress
     {% include masthead.html %}
 
     <div id="main" role="main">
-      {% include sidebar.html %}
+      {% include sidebar.html %} <!-- 左侧栏 -->
     
       <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
         {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -74,49 +74,124 @@ layout: compress
 
         </div>
       </article>
+      <!-- 在 </article> 后，</div> 前插入以下右侧边栏代码 -->
+      <aside class="recent-posts-sidebar">
+        <h3>最近博客</h3>
+        <ul>
+          {% for post in site.posts limit:5 %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title | truncate: 30 }}</a>
+            <br>
+            <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+          </li>
+          {% endfor %}
+        </ul>
+        <p><a href="{{ '/blog/' | relative_url }}">查看所有博客 →</a></p>
+      </aside>
+      <!-- 右侧边栏代码结束 -->
     </div>
 
     {% include scripts.html %}
 
     <!-- 博客文章页专属样式 -->
     <style>
-/* === 核心布局修复：解决右侧空白、页脚错位 === */
-/* 1. 将主容器设为Flex布局，确保侧边栏和文章区并排 */
+/* === 核心三栏布局修复 === */
 #main {
     display: flex;
     flex-direction: row;
     width: 100%;
+    gap: 40px; /* 控制各栏之间的间距 */
+    padding: 0 20px; /* 为整体布局添加一些左右内边距 */
+    box-sizing: border-box;
 }
 
-/* 2. 固定侧边栏宽度，并防止其挤压主内容区 */
+/* 左侧个人信息栏 */
 .sidebar {
-    width: 130px; /* 根据你的侧边栏实际宽度调整，通常在240px-340px之间 */
-    flex-shrink: 0; /* 关键：禁止侧边栏收缩 */
+    width: 280px; /* 固定宽度 */
+    flex-shrink: 0;
 }
 
-/* 3. 让文章容器(.page)占据所有剩余宽度，并作为新的Flex容器控制内部布局 */
+/* 中间文章内容区 - 占据剩余主要空间 */
 .page {
-    flex: 1; /* 关键：占据除侧边栏外的所有水平空间 */
-    min-width: 0; /* 关键：允许在Flex容器内正常收缩 */
+    flex: 1; /* 关键：占据大部分可变空间 */
+    min-width: 0; /* 允许在flex布局中收缩 */
     display: flex;
     flex-direction: column;
-    align-items: center; /* 使子元素水平居中 */
+    align-items: center;
 }
 
-/* 4. 内容包裹层：限制最大阅读宽度，并居中 */
+/* 右侧"最近博客"边栏 */
+.recent-posts-sidebar {
+    width: 250px; /* 固定宽度，小于左侧栏 */
+    flex-shrink: 0;
+    padding: 1.5rem;
+    background-color: #f8f9fa; /* 浅灰色背景，区别于主内容区 */
+    border-radius: 8px;
+    font-size: 0.9rem;
+    max-height: fit-content; /* 高度根据内容自适应 */
+    position: sticky; /* 添加粘性定位，滚动时跟随 */
+    top: 2rem; /* 粘性定位时距顶部的距离 */
+    align-self: flex-start; /* 确保与文章顶部对齐 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.recent-posts-sidebar h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+.recent-posts-sidebar ul {
+    padding-left: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+.recent-posts-sidebar li {
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+.recent-posts-sidebar a {
+    color: #1e40af;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.recent-posts-sidebar a:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+.recent-posts-sidebar small {
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+.recent-posts-sidebar > p {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #dee2e6;
+}
+.recent-posts-sidebar > p a {
+    color: #4b5563;
+    font-weight: 500;
+}
+.recent-posts-sidebar > p a:hover {
+    color: #1e40af;
+}
+
+/* 调整内部容器宽度以适配三栏 */
 .page__inner-wrap {
     width: 100%;
-    max-width: 1000px; /* 核心：文章正文和页脚的基准最大宽度 */
-    padding: 0 40px 14rem; /* 左右内边距，底部为页脚留足空间 */
-    box-sizing: border-box; /* 确保padding包含在总宽度内 */
+    max-width: 100%; /* 移除固定最大宽度，让其填充 .page 的可用空间 */
+    padding: 0 20px 14rem;
+    box-sizing: border-box;
 }
 
-/* 5. 页脚容器：继承与.page__inner-wrap完全相同的宽度和水平位置 */
 .page__footer {
     width: 100%;
-    max-width: 1050px; /* 必须与.page__inner-wrap的max-width一致 */
+    max-width: 100%; /* 必须与.page__inner-wrap的max-width一致 */
     margin-top: 4rem;
-    padding: 2rem 40px 0; /* 左右padding与.page__inner-wrap一致 */
+    padding: 2rem 20px 0; /* 左右padding与.page__inner-wrap一致 */
     border-top: 1px solid #e9ecef;
     background: transparent;
     box-sizing: border-box;
@@ -160,7 +235,7 @@ layout: compress
     cursor: not-allowed;
     opacity: 0.6;
 }
-/* “返回博客列表”链接 */
+/* "返回博客列表"链接 */
 .page__footer-back {
     text-align: center;
     margin-top: 2.5rem;
@@ -207,28 +282,66 @@ layout: compress
     text-decoration: none;
 }
 
-/* === 响应式调整：适配移动设备 === */
-@media (max-width: 1024px) {
-    .page__inner-wrap,
-    .page__footer {
-        max-width: 95%; /* 在中等屏幕下使用百分比宽度 */
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-@media (max-width: 768px) {
+/* === 响应式设计：中等屏幕（如平板）=== */
+@media (max-width: 1200px) {
     #main {
-        flex-direction: column; /* 侧边栏和文章改为上下布局 */
+        gap: 20px; /* 减少间距 */
+        padding: 0 15px;
     }
     .sidebar {
-        width: 100%; /* 侧边栏占满宽度 */
+        width: 240px;
+    }
+    .recent-posts-sidebar {
+        width: 220px;
+        padding: 1.2rem;
+    }
+    .page__header .page__title {
+        font-size: 2.2rem;
+    }
+}
+
+/* === 响应式设计：小屏幕（如平板竖屏）=== */
+@media (max-width: 1024px) {
+    #main {
+        gap: 15px;
+    }
+    .sidebar {
+        width: 200px;
+    }
+    .recent-posts-sidebar {
+        width: 200px;
+        padding: 1rem;
+    }
+    .page__inner-wrap,
+    .page__footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* === 响应式设计：小屏幕（如手机）=== */
+@media (max-width: 768px) {
+    #main {
+        flex-direction: column; /* 三栏垂直堆叠 */
+        gap: 0;
+        padding: 0 10px;
+    }
+    .sidebar,
+    .recent-posts-sidebar {
+        width: 100%; /* 占满宽度 */
         margin-bottom: 2rem;
+        position: static; /* 取消粘性定位 */
+    }
+    .recent-posts-sidebar {
+        order: 3; /* 控制垂直堆叠时的顺序 */
+        border-radius: 12px;
+        padding: 1.5rem;
     }
     .page__inner-wrap,
     .page__footer {
         max-width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .page__header .page__title {
         font-size: 2rem; /* 移动端标题略小 */
