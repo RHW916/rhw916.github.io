@@ -73,87 +73,89 @@ layout: compress
           <!-- ===== 博客文章页脚区域结束 ===== -->
 
         </div>
-        <style>
-/* 1. 调整文章主标题大小 */
-.post .page__header .page__title {
-    font-size: 3.2rem; /* 调大标题字体，可根据感觉调整数值 */
-    margin-bottom: 1.5rem;
+      <style>
+/* 1. 确保文章内容区与页脚等宽 */
+.page__inner-wrap {
+    max-width: 100%; /* 继承外层容器的最大宽度限制 */
 }
-
-/* 2. 分别设置分类和标签的颜色 */
+/* 2. 调整文章主标题 */
+.page__header .page__title {
+    font-size: 3.2rem;
+    margin-bottom: 1.3em;
+}
+/* 3. 调整分类与标签颜色 */
 .page__meta .page__taxonomy-item {
-    /* 默认样式（分类） */
-    background-color: #e9ecef; /* 浅灰色背景 */
-    color: #495057; /* 深灰色文字 */
-    padding: 0.25em 0.6em;
-    border-radius: 4px;
-    text-decoration: none;
-    margin: 0 0.1em;
-    display: inline-block;
+    background-color: #e9ecef; /* 分类 - 灰色 */
+    color: #495057;
 }
-/* 特别针对标签链接（href属性包含“tags”） */
 .page__meta a[href*="/tags/"] {
-    background-color: #dbeafe; /* 浅蓝色背景 */
-    color: #1e40af; /* 深蓝色文字 */
+    background-color: #dbeafe; /* 标签 - 蓝色 */
+    color: #1e40af;
 }
-/* 鼠标悬停效果 */
-.page__meta .page__taxonomy-item:hover {
-    opacity: 0.8;
-    text-decoration: none;
-}
-
-/* 3. 优化底部导航区域样式 */
+/* 4. 核心：重构底部导航样式 */
 .page__footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #dee2e6;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e9ecef; /* 更细更浅的分隔线 */
+    background: transparent; /* 移除可能的灰色背景 */
 }
-/* 调整分页导航容器 */
+/* 分页容器：严格限制宽度，居中 */
 .pagination {
     display: flex;
     justify-content: space-between;
-    max-width: 100%; /* 防止过长 */
-    flex-wrap: wrap; /* 小屏幕时允许换行 */
-    gap: 0.5rem;
+    max-width: 100%; /* 限制为文章内容宽度 */
+    margin: 0 auto; /* 居中 */
+    gap: 1rem;
+    flex-wrap: wrap;
 }
-/* 分页按钮样式 */
+/* 分页按钮：紧凑设计 */
 .pagination--pager {
-    flex: 1; /* 让两个按钮等宽 */
-    min-width: 140px; /* 设置最小宽度 */
-    max-width: 48%; /* 防止过长 */
-    padding: 0.75rem 1rem;
+    flex: 1;
+    min-width: 120px;
+    max-width: calc(50% - 0.5rem); /* 考虑间隙后的一半宽度 */
+    padding: 0.6rem 0.8rem;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* 非常浅的灰色背景 */
     border: 1px solid #dee2e6;
     border-radius: 6px;
     color: #333;
     text-decoration: none;
+    font-size: 0.9rem;
     transition: all 0.2s ease;
 }
 .pagination--pager:hover:not(.disabled) {
     background-color: #e9ecef;
     border-color: #adb5bd;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .pagination--pager.disabled {
     color: #adb5bd;
+    background-color: #f8f9fa;
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.7;
 }
-/* “返回博客列表”链接 */
+/* 返回博客列表链接 */
 .page__footer-back {
     text-align: center;
     margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed #dee2e6; /* 改用虚线分隔，更轻量 */
 }
 .page__footer-back a {
     color: #6c757d;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s;
 }
 .page__footer-back a:hover {
     color: #0056b3;
-    text-decoration: underline;
+    background-color: #f8f9fa;
+    text-decoration: none;
 }
+</style>
 </style>
       </article>
     </div>
