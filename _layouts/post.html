@@ -1,116 +1,81 @@
-layout: default
 ---
+layout: compress
+---
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+  <body>
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
 
-<!-- 继承主题的完整框架（页眉、侧边栏），并专注于文章内容 -->
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  
-  <!-- 文章标题区 -->
-  <header class="post__header">
-    <h1 class="post__title p-name" itemprop="name headline">
-      {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
-    </h1>
-    <p class="page__meta">
-      <!-- 发布日期 -->
-      <i class="far fa-calendar-alt" aria-hidden="true"></i> 
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: "%Y年%m月%d日" }}
-      </time>
-      <!-- 分类 -->
-      {% if page.categories.size > 0 %}
-        • <i class="fas fa-folder-open" aria-hidden="true"></i> 
-        <span itemprop="keywords">
-          {% for category in page.categories %}
-            <a href="{{ category | slugify | prepend: '/categories/#' | relative_url }}" class="page__taxonomy-item" rel="tag">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
-        </span>
-      {% endif %}
-      <!-- 标签 -->
-      {% if page.tags.size > 0 %}
-        • <i class="fas fa-tags" aria-hidden="true"></i>
-        <span itemprop="keywords">
-          {% for tag in page.tags %}
-            <a href="{{ tag | slugify | prepend: '/tags/#' | relative_url }}" class="page__taxonomy-item" rel="tag">#{{ tag }}</a>{% unless forloop.last %} {% endfor %}
-          {% endfor %}
-        </span>
-      {% endif %}
-    </p>
-  </header>
-<!-- 主题的关键内容容器 -->
-<div id="main" role="main">
-  <!-- 主题的侧边栏包含 -->
-  {% include sidebar.html %}
+    <div id="main" role="main">
+      {% include sidebar.html %}
+    
+      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+        {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+        <div class="page__inner-wrap">
+          
+          <!-- ===== 以下是博客文章专属的头部区域 ===== -->
+          <header class="page__header">
+            <h1 id="page-title" class="page__title" itemprop="headline">
+              {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+            </h1>
+            <p class="page__meta">
+              <!-- 发布日期 -->
+              <i class="far fa-calendar-alt" aria-hidden="true"></i> 
+              <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y年%m月%d日" }}</time>
+              
+              <!-- 分类 -->
+              {% if page.categories.size > 0 %}
+                • <i class="fas fa-folder-open" aria-hidden="true"></i> 
+                {% for category in page.categories %}
+                  <a href="{{ category | slugify | prepend: '/categories/#' | relative_url }}" class="page__taxonomy-item" rel="tag">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              {% endif %}
+              
+              <!-- 标签 -->
+              {% if page.tags.size > 0 %}
+                • <i class="fas fa-tags" aria-hidden="true"></i>
+                {% for tag in page.tags %}
+                  <a href="{{ tag | slugify | prepend: '/tags/#' | relative_url }}" class="page__taxonomy-item" rel="tag">{{ tag }}</a>{% unless forloop.last %} {% endunless %}
+                {% endfor %}
+              {% endif %}
+            </p>
+          </header>
+          <!-- ===== 博客文章头部区域结束 ===== -->
 
-  <!-- 文章正文 -->
-  <section class="post__content e-content" itemprop="articleBody">
-    {{ content }}
-  </section>
-  <!-- 主题的文章内容容器 -->
-  <div class="archive">
-    <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-      <div class="page__inner-wrap">
-        
-        <!-- 文章头部 -->
-        <header class="page__header">
-          <h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>
-          <p class="page__meta">
-            <i class="far fa-calendar-alt" aria-hidden="true"></i> 
-            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y年%m月%d日" }}</time>
-            {% if page.categories.size > 0 %}
-              • <i class="fas fa-folder-open" aria-hidden="true"></i> 
-              {% for category in page.categories %}
-                <a href="{{ category | slugify | prepend: '/categories/#' | relative_url }}" class="page__taxonomy-item" rel="tag">{{ category }}</a>{% unless forloop.last %}, {% endfor %}
-              {% endfor %}
-            {% endif %}
-            {% if page.tags.size > 0 %}
-              • <i class="fas fa-tags" aria-hidden="true"></i>
-              {% for tag in page.tags %}
-                <a href="{{ tag | slugify | prepend: '/tags/#' | relative_url }}" class="page__taxonomy-item" rel="tag">#{{ tag }}</a>{% unless forloop.last %} {% endfor %}
-              {% endfor %}
-            {% endif %}
-          </p>
-        </header>
+          <!-- 文章正文内容（将由Markdown原文填充） -->
+          <section class="page__content" itemprop="text">
+            {{ content }}
+          </section>
 
-  <!-- 文章页脚：导航 -->
-  <footer class="post__footer">
-    <nav class="pagination">
-      {% if page.previous.url %}
-        <a href="{{ page.previous.url | relative_url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">上一篇：{{ page.previous.title | truncatewords: 8 }}</a>
-      {% else %}
-        <a href="#" class="pagination--pager disabled">这是第一篇</a>
-      {% endif %}
-      {% if page.next.url %}
-        <a href="{{ page.next.url | relative_url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">下一篇：{{ page.next.title | truncatewords: 8 }}</a>
-      {% else %}
-        <a href="#" class="pagination--pager disabled">这是最后一篇</a>
-      {% endif %}
-    </nav>
-    <div class="page__footer-back-to-top">
-      <a href="#site-nav">↑ 返回顶部</a> • 
-      <a href="{{ '/blog/' | relative_url }}">← 返回博客列表</a>
+          <!-- ===== 以下是博客文章专属的页脚导航 ===== -->
+          <footer class="page__footer">
+            <nav class="pagination">
+              {% if page.previous.url %}
+                <a href="{{ page.previous.url | relative_url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">« 上一篇：{{ page.previous.title | truncatewords: 5 }}</a>
+              {% else %}
+                <a href="#" class="pagination--pager disabled">这是第一篇</a>
+              {% endif %}
+              {% if page.next.url %}
+                <a href="{{ page.next.url | relative_url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">下一篇：{{ page.next.title | truncatewords: 5 }} »</a>
+              {% else %}
+                <a href="#" class="pagination--pager disabled">这是最后一篇</a>
+              {% endif %}
+            </nav>
+            <div class="page__footer-back">
+              <a href="{{ '/blog/' | relative_url }}"><i class="fas fa-arrow-left"></i> 返回博客列表</a>
+            </div>
+          </footer>
+          <!-- ===== 博客文章页脚区域结束 ===== -->
+
+        </div>
+      </article>
     </div>
-  </footer>
-        <!-- 文章正文 -->
-        <section class="page__content" itemprop="text">
-          {{ content }}
-        </section>
 
-</article>
-        <!-- 文章页脚导航 -->
-        <footer class="page__footer">
-          <nav class="pagination">
-            {% if page.previous.url %}
-              <a href="{{ page.previous.url | relative_url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">« 上一篇</a>
-            {% endif %}
-            {% if page.next.url %}
-              <a href="{{ page.next.url | relative_url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">下一篇 »</a>
-            {% endif %}
-          </nav>
-          <div style="text-align:center; margin-top:2em;">
-            <a href="{{ '/blog/' | relative_url }}">← 返回博客列表</a>
-          </div>
-        </footer>
-
-      </div>
-    </article>
-  </div>
-</div>
+    {% include scripts.html %}
+  </body>
+</html>
