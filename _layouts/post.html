@@ -103,11 +103,12 @@ layout: compress
     gap: 40px; /* 控制各栏之间的间距 */
     padding: 0 20px; /* 为整体布局添加一些左右内边距 */
     box-sizing: border-box;
+    align-items: flex-start; /* 确保顶部对齐 */
 }
 
 /* 左侧个人信息栏 */
 .sidebar {
-    width: 120px; /* 固定宽度 */
+    width: 280px; /* 固定宽度 */
     flex-shrink: 0;
 }
 
@@ -117,7 +118,15 @@ layout: compress
     min-width: 0; /* 允许在flex布局中收缩 */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* 子元素水平居中 */
+}
+
+/* 文章内容包裹层 - 控制文章正文宽度 */
+.page__inner-wrap {
+    width: 100%;
+    max-width: 850px; /* 文章正文的最大阅读宽度 */
+    padding: 0 0 3rem; /* 底部留一些空间给页脚 */
+    box-sizing: border-box;
 }
 
 /* 右侧"最近博客"边栏 */
@@ -179,19 +188,12 @@ layout: compress
     color: #1e40af;
 }
 
-/* 调整内部容器宽度以适配三栏 */
-.page__inner-wrap {
-    width: 100%;
-    max-width: 100%; /* 移除固定最大宽度，让其填充 .page 的可用空间 */
-    padding: 0 20px 14rem;
-    box-sizing: border-box;
-}
-
+/* === 关键修复：页脚只与文章正文对齐 === */
 .page__footer {
     width: 100%;
-    max-width: 100%; /* 必须与.page__inner-wrap的max-width一致 */
-    margin-top: 4rem;
-    padding: 2rem 20px 0; /* 左右padding与.page__inner-wrap一致 */
+    max-width: 850px; /* 与.page__inner-wrap的max-width完全一致 */
+    margin: 4rem auto 0; /* 上下边距，水平自动居中 */
+    padding: 2rem 0 0; /* 取消左右padding，让宽度完全由max-width控制 */
     border-top: 1px solid #e9ecef;
     background: transparent;
     box-sizing: border-box;
@@ -298,6 +300,10 @@ layout: compress
     .page__header .page__title {
         font-size: 2.2rem;
     }
+    .page__inner-wrap,
+    .page__footer {
+        max-width: 780px; /* 中等屏幕下稍小一些 */
+    }
 }
 
 /* === 响应式设计：小屏幕（如平板竖屏）=== */
@@ -314,8 +320,7 @@ layout: compress
     }
     .page__inner-wrap,
     .page__footer {
-        padding-left: 15px;
-        padding-right: 15px;
+        max-width: 700px; /* 小屏幕下更小 */
     }
 }
 
@@ -339,9 +344,9 @@ layout: compress
     }
     .page__inner-wrap,
     .page__footer {
-        max-width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
+        max-width: 100%; /* 手机屏幕上占满可用宽度 */
+        padding-left: 0;
+        padding-right: 0;
     }
     .page__header .page__title {
         font-size: 2rem; /* 移动端标题略小 */
@@ -350,13 +355,6 @@ layout: compress
         min-width: 140px; /* 移动端按钮稍宽 */
     }
 }
-
-/* GitHub 代码块字体放大 */
-.blob-code-inner, .highlight pre, .pl-c, .pl-s {
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-}
-      
     </style>
   </body>
 </html>
