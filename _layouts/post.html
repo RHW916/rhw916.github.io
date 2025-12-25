@@ -77,6 +77,7 @@ layout: compress
 /* 1. 确保文章内容区与页脚等宽 */
 .page__inner-wrap {
     max-width: 100%; /* 继承外层容器的最大宽度限制 */
+    padding-bottom: 3rem; /* 新增 */
 }
 /* 2. 调整文章主标题 */
 .page__header .page__title {
@@ -110,7 +111,7 @@ layout: compress
 }
 /* 分页按钮：紧凑设计 */
 .pagination--pager {
-    flex: 1;
+    flex: 1 1 auto;;
     min-width: 120px;
     max-width: calc(50% - 0.5rem); /* 考虑间隙后的一半宽度 */
     padding: 0.6rem 0.8rem;
@@ -155,7 +156,6 @@ layout: compress
     background-color: #f8f9fa;
     text-decoration: none;
 }
-</style>
 </style>
       </article>
     </div>
