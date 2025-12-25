@@ -18,7 +18,7 @@ layout: compress
         {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
         <div class="page__inner-wrap">
           
-          <!-- ===== 以下是博客文章专属的头部区域 ===== -->
+          <!-- ===== 博客文章专属的头部区域 ===== -->
           <header class="page__header">
             <h1 id="page-title" class="page__title" itemprop="headline">
               {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
@@ -52,7 +52,7 @@ layout: compress
             {{ content }}
           </section>
 
-          <!-- ===== 以下是博客文章专属的页脚导航 ===== -->
+          <!-- ===== 博客文章专属的页脚导航 ===== -->
           <footer class="page__footer">
             <nav class="pagination">
               {% if page.previous.url %}
@@ -73,98 +73,170 @@ layout: compress
           <!-- ===== 博客文章页脚区域结束 ===== -->
 
         </div>
-      <style>
-/* 1. 确保文章内容区与页脚等宽 */
-.page__inner-wrap {
-    max-width: 100%; /* 继承外层容器的最大宽度限制 */
-    padding-bottom: 13rem; /* 新增 */
+      </article>
+    </div>
+
+    {% include scripts.html %}
+
+    <!-- 博客文章页专属样式 -->
+    <style>
+/* === 核心布局修复：解决右侧空白、页脚错位 === */
+/* 1. 将主容器设为Flex布局，确保侧边栏和文章区并排 */
+#main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
-/* 2. 调整文章主标题 */
-.page__header .page__title {
-    font-size: 2.4rem;
-    margin-bottom: 0.7em;
+
+/* 2. 固定侧边栏宽度，并防止其挤压主内容区 */
+.sidebar {
+    width: 300px; /* 根据你的侧边栏实际宽度调整，通常在240px-340px之间 */
+    flex-shrink: 0; /* 关键：禁止侧边栏收缩 */
 }
-/* 3. 调整分类与标签颜色 */
-.page__meta .page__taxonomy-item {
-    background-color: #e9ecef; /* 分类 - 灰色 */
-    color: #495057;
-}
-.page__meta a[href*="/tags/"] {
-    background-color: #dbeafe; /* 标签 - 蓝色 */
-    color: #1e40af;
-}
-/* 4. 核心：重构底部导航样式 */
-.page__footer {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e9ecef; /* 更细更浅的分隔线 */
-    background: transparent; /* 移除可能的灰色背景 */
-      /* 新增以下三行，使内部元素在主轴（默认为水平）上居中 */
+
+/* 3. 让文章容器(.page)占据所有剩余宽度，并作为新的Flex容器控制内部布局 */
+.page {
+    flex: 1; /* 关键：占据除侧边栏外的所有水平空间 */
+    min-width: 0; /* 关键：允许在Flex容器内正常收缩 */
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    align-items: center; /* 使子元素水平居中 */
 }
-/* 分页容器：严格限制宽度，居中 */
+
+/* 4. 内容包裹层：限制最大阅读宽度，并居中 */
+.page__inner-wrap {
+    width: 100%;
+    max-width: 900px; /* 核心：文章正文和页脚的基准最大宽度 */
+    padding: 0 40px 4rem; /* 左右内边距，底部为页脚留足空间 */
+    box-sizing: border-box; /* 确保padding包含在总宽度内 */
+}
+
+/* 5. 页脚容器：继承与.page__inner-wrap完全相同的宽度和水平位置 */
+.page__footer {
+    width: 100%;
+    max-width: 900px; /* 必须与.page__inner-wrap的max-width一致 */
+    margin-top: 4rem;
+    padding: 2rem 40px 0; /* 左右padding与.page__inner-wrap一致 */
+    border-top: 1px solid #e9ecef;
+    background: transparent;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 内部元素居中 */
+}
+
+/* === 页脚内部组件样式 === */
+/* 分页按钮容器 */
 .pagination {
     display: flex;
     justify-content: space-between;
-    max-width: 100%; /* 限制为文章内容宽度 */
-    margin: 0 auto; /* 居中 */
+    width: 100%; /* 填充.page__footer的可用宽度 */
     gap: 1rem;
     flex-wrap: wrap;
 }
-/* 分页按钮：紧凑设计 */
+/* 分页按钮 */
 .pagination--pager {
-    flex: 1 ;
+    flex: 1;
     min-width: 120px;
-    max-width: calc(50% - 0.5rem); /* 考虑间隙后的一半宽度 */
-    padding: 0.6rem 0.8rem;
+    max-width: calc(50% - 0.5rem); /* 两个按钮并排时考虑间隙 */
+    padding: 0.7rem 1rem;
     text-align: center;
-    background-color: #f8f9fa; /* 非常浅的灰色背景 */
+    background-color: #f8f9fa;
     border: 1px solid #dee2e6;
-    border-radius: 6px;
+    border-radius: 8px;
     color: #333;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: all 0.2s ease;
 }
 .pagination--pager:hover:not(.disabled) {
     background-color: #e9ecef;
     border-color: #adb5bd;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 .pagination--pager.disabled {
     color: #adb5bd;
-    background-color: #f8f9fa;
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.6;
 }
-/* 返回博客列表链接 */
+/* “返回博客列表”链接 */
 .page__footer-back {
     text-align: center;
-    margin-top: 5rem;
+    margin-top: 2.5rem;
     padding-top: 1.5rem;
-    border-top: 1px dashed #dee2e6; /* 改用虚线分隔，更轻量 */
+    border-top: 1px dashed #dee2e6;
+    width: 100%;
 }
 .page__footer-back a {
     color: #6c757d;
     text-decoration: none;
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
     transition: all 0.2s;
 }
 .page__footer-back a:hover {
     color: #0056b3;
     background-color: #f8f9fa;
+}
+
+/* === 文章内容区细节优化 === */
+/* 标题放大 */
+.page__header .page__title {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+/* 分类标签颜色：分类-灰色，标签-蓝色 */
+.page__meta .page__taxonomy-item {
+    background-color: #e9ecef; /* 分类 - 灰色 */
+    color: #495057;
+    padding: 0.25em 0.6em;
+    margin: 0 0.1em;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+.page__meta a[href*="/tags/"] {
+    background-color: #dbeafe; /* 标签 - 蓝色 */
+    color: #1e40af;
+}
+.page__meta .page__taxonomy-item:hover {
+    opacity: 0.85;
     text-decoration: none;
 }
-</style>
-      </article>
-    </div>
 
-    {% include scripts.html %}
+/* === 响应式调整：适配移动设备 === */
+@media (max-width: 1024px) {
+    .page__inner-wrap,
+    .page__footer {
+        max-width: 95%; /* 在中等屏幕下使用百分比宽度 */
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media (max-width: 768px) {
+    #main {
+        flex-direction: column; /* 侧边栏和文章改为上下布局 */
+    }
+    .sidebar {
+        width: 100%; /* 侧边栏占满宽度 */
+        margin-bottom: 2rem;
+    }
+    .page__inner-wrap,
+    .page__footer {
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .page__header .page__title {
+        font-size: 2rem; /* 移动端标题略小 */
+    }
+    .pagination--pager {
+        min-width: 140px; /* 移动端按钮稍宽 */
+    }
+}
+    </style>
   </body>
 </html>
