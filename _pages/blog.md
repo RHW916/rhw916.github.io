@@ -246,4 +246,11 @@ author_profile: true
     margin-bottom: 0.4rem;
   }
 }
+  
+/* 隐藏博客列表页的尾部导航 */
+.pagination,
+.page__footer-back {
+    display: none !important;
+}
+  
 </style>
