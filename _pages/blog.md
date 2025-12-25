@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 title: "博客"
 permalink: /blog/
 author_profile: true
