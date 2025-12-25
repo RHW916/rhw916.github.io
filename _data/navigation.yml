@@ -8,6 +8,7 @@ main:
     
   - title: "Blogs"
     url: "/#-blogs"
+    anchor: "#blogs"  # 添加一个自定义属性
     
   - title: "Publications"
     url: "/#-publications"
