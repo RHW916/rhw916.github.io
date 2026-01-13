@@ -22,7 +22,9 @@ These lessons are what I wish I’d known earlier. Some would have saved me mont
 I’m sharing them because I’ve benefited enormously from engineers who did the same for me. Consider this my attempt to pay it forward.
 
 14 年前当我加入谷歌时，我以为这份工作就是写出好代码。我部分正确。但待得越久，我越意识到，那些茁壮成长的工程师未必是最佳程序员——他们懂得如何在代码周围游刃有余：人际关系、政治、协同一致和不确定性。
+
 这些教训是我希望早点知道的东西。有些能让我节省数月的挫败感，另一些则花了我数年才能真正理解。它们都不是关于具体技术的——那些变化太快，不值得关注。它们是关于那些在一个接一个项目和团队中反复出现的模式。
+
 我分享是因为我同样从前辈工程师那里获益良多，请将这视为我传递善意的尝试。
 
 1. The best engineers are obsessed with solving user problems.
@@ -34,11 +36,14 @@ User obsession means spending time in support tickets, talking to users, watchin
 The engineer who starts with a solution tends to build complexity in search of a justification.
 
 1. 最好的工程师都痴迷于解决用户问题。
+
 沉溺于一种技术并寻找应用它的地方是诱人的。我这样做过，像几乎每个人一样。但创造最大价值的工程师是逆向工作的：他们痴迷于深入理解用户问题，并让解决方案从这种理解中自然浮现。
+
 痴迷于用户意味着花时间查看支持工单、与用户交谈、观察用户的困扰，整个过程不断问“为什么”直到触及根本。真正理解问题的工程师常常发现，优雅的解决方案比任何人预期的都要简单。
+
 而从解决方案出发的工程师往往在寻找其合理性的过程中把问题越弄越复杂。
 
-2. Being right is cheap. Getting to right together is the real work.
+3. Being right is cheap. Getting to right together is the real work.
 
 You can win every technical argument and lose the project. I’ve watched brilliant engineers accrue silent resentment by always being the smartest person in the room. The cost shows up later as “mysterious execution issues” and “strange resistance.”
 
@@ -47,11 +52,14 @@ The skill isn’t being right. It’s entering discussions to align on the probl
 Strong opinions, weakly held - not because you lack conviction, but because decisions made under uncertainty shouldn’t be welded to identity.
 
 2. 正确不值钱，一起做到才是真正的挑战。
+
 你可以赢得每一个技术争论却输掉整个项目。我见过才华横溢的工程师因为永远是房间里最聪明的人而（在房间其他人那儿）积累沉默的怨恨。这种代价后来表现为“神秘的执行问题”和“奇怪的阻力”。
+
 这项技能不在于正确，而在于参与讨论以就问题达成一致，为他人创造空间，并对自己的确定性保持怀疑。
+
 强烈的观点要弱化持有——不是因为缺乏信念，而是因为在不确定性下做出的决策不应与身份绑定。
 
-3. Bias towards action. Ship. You can edit a bad page, but you can’t edit a blank one.
+4. Bias towards action. Ship. You can edit a bad page, but you can’t edit a blank one.
 3. 偏向行动。发布。你可以编辑一个糟糕的页面，但你无法编辑一个空白的页面。
 The quest for perfection is paralyzing. I’ve watched engineers spend weeks debating the ideal architecture for something they’ve never built. The perfect solution rarely emerges from thought alone - it emerges from contact with reality. AI can in many ways help here.
 追求完美是令人瘫痪的。我见过工程师们花几周时间争论他们从未构建过的理想架构。完美的解决方案很少仅凭思考就能产生——它产生于与现实接触的过程中。人工智能在很多方面能在这里提供帮助。
