@@ -59,27 +59,37 @@ Strong opinions, weakly held - not because you lack conviction, but because deci
 
 强烈的观点要弱化持有——不是因为缺乏信念，而是因为在不确定性下做出的决策不应与身份绑定。
 
-4. Bias towards action. Ship. You can edit a bad page, but you can’t edit a blank one.
-3. 偏向行动。发布。你可以编辑一个糟糕的页面，但你无法编辑一个空白的页面。
+3. Bias towards action. Ship. You can edit a bad page, but you can’t edit a blank one.
+
 The quest for perfection is paralyzing. I’ve watched engineers spend weeks debating the ideal architecture for something they’ve never built. The perfect solution rarely emerges from thought alone - it emerges from contact with reality. AI can in many ways help here.
-追求完美是令人瘫痪的。我见过工程师们花几周时间争论他们从未构建过的理想架构。完美的解决方案很少仅凭思考就能产生——它产生于与现实接触的过程中。人工智能在很多方面能在这里提供帮助。
 
 First do it, then do it right, then do it better. Get the ugly prototype in front of users. Write the messy first draft of the design doc. Ship the MVP that embarrasses you slightly. You’ll learn more from one week of real feedback than a month of theoretical debate.
-先做，再做正确，然后做得更好。让难看的原型面对用户。写出混乱的第一版设计文档。发布让你略感尴尬的最小可行产品。你将比一个月的理论辩论更能从一周的真实反馈中学习到更多。
 
 Momentum creates clarity. Analysis paralysis creates nothing.
+
+3. 偏向行动、发布。你可以编辑一个糟糕的页面，但你无法编辑一个空白的页面。
+
+追求完美是令人瘫痪的（反而会令人裹足不前）。我见过工程师们花几周时间争论他们从未搭建的理想架构。完美的解决方案很少仅凭思考就能产生——它产生于与现实接触的过程中。人工智能在很多方面能在这里提供帮助。
+
+先做，再做正确，然后做得更好。让难看的原型面对用户。写出混乱的第一版设计文档。发布让你略感尴尬的最小可行产品。比起一个月的理论辩论，你将从一周的真实反馈中学习到更多。
+
 势头创造清晰。分析瘫痪创造不了任何东西。
 
 4. Clarity is seniority. Cleverness is overhead.
-4. 清晰是资历。聪明是负担。
+
 The instinct to write clever code is almost universal among engineers. It feels like proof of competence.
-工程师几乎都有写聪明代码的冲动。这感觉像是能力的证明。
 
 But software engineering is what happens when you add time and other programmers. In that environment, clarity isn’t a style preference - it’s operational risk reduction.
-但软件工程是在你加入时间和其他程序员时发生的。在那个环境中，清晰不是一种风格偏好——它是运营风险降低。
 
 Your code is a strategy memo to strangers who will maintain it at 2am during an outage. Optimize for their comprehension, not your elegance. The senior engineers I respect most have learned to trade cleverness for clarity, every time.
-你的代码是一份给陌生人的策略备忘录，他们会在凌晨两点维护故障时使用它。要优化他们的理解，而不是你的优雅。我最尊敬的那些资深工程师已经学会每次都用清晰度换取聪明才智。
+
+4. 清晰是资历。聪明是负担。
+
+工程师几乎都有写聪明代码的冲动。这感觉像是能力的证明。
+
+但软件工程是在你加入时间和其他程序员时发生的（即软件工程是时间和多程序员协作的产物）。在那个环境中，清晰不是一种风格偏好——它是运营风险降低。
+
+你的代码是一份给陌生人的策略备忘录，他们可能会在凌晨两点维护故障时使用它。要为了他们的理解而优化，而不是只为你的优雅。我最尊敬的那些高级工程师已经学会用清晰度换取聪明才智，每次。
 
 5. Novelty is a loan you repay in outages, hiring, and cognitive overhead.
 5. 新颖性是一笔你在故障、招聘和认知负担中偿还的贷款。
