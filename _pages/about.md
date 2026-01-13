@@ -19,7 +19,7 @@ redirect_from:
 
 ## 👋 关于我
 
-我是北京邮电大学理学院数学与应用数学专业的本科生。[<span class="resume-download">
+我是北京邮电大学的本科生。[<span class="resume-download">
   简历下载：
   <a href="/assets/pdf/CV_CN.pdf" target="_blank" class="cv-link">中文版 →</a>
   <a href="/assets/pdf/CV_EN.pdf" target="_blank" class="cv-link">English →</a>
