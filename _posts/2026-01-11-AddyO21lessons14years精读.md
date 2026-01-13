@@ -10,7 +10,9 @@ excerpt: "探讨如何结合Tensor Train分解与LoRA技术优化Whisper模型�
 
 ## 背景
 
-偶然看到此文翻译觉得还是回归原文，精读后贴出翻译（加入局部细节个人意译）和一些思考。考虑到作者语言习惯有刻意保持某种工程师对遣词的直白与简洁。原文指路：https://addyosmani.com/blog/21-lessons/
+偶然看到此文翻译觉得还是回归原文，精读后贴出翻译（插件GLM机翻+加入局部细节个人意译）和一些思考。考虑到作者语言习惯有刻意保持某种工程师对遣词的直白与简洁。原文指路：https://addyosmani.com/blog/21-lessons/
+
+插件指路：沉浸式翻译 https://microsoftedge.microsoft.com/addons/detail/%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%BF%BB%E8%AF%91-%E7%BD%91%E9%A1%B5%E7%BF%BB%E8%AF%91%E6%8F%92%E4%BB%B6-pdf%E7%BF%BB%E8%AF%91-/amkbmndfnliijdhojkpoglbnaaahippg
 
 ## 21 Lessons From 14 Years at Google
 ### January 3, 2026 
@@ -43,7 +45,7 @@ The engineer who starts with a solution tends to build complexity in search of a
 
 而从解决方案出发的工程师往往在寻找其合理性的过程中把问题越弄越复杂。
 
-3. Being right is cheap. Getting to right together is the real work.
+2. Being right is cheap. Getting to right together is the real work.
 
 You can win every technical argument and lose the project. I’ve watched brilliant engineers accrue silent resentment by always being the smartest person in the room. The cost shows up later as “mysterious execution issues” and “strange resistance.”
 
@@ -92,70 +94,101 @@ Your code is a strategy memo to strangers who will maintain it at 2am during an 
 你的代码是一份给陌生人的策略备忘录，他们可能会在凌晨两点维护故障时使用它。要为了他们的理解而优化，而不是只为你的优雅。我最尊敬的那些高级工程师已经学会用清晰度换取聪明才智，每次。
 
 5. Novelty is a loan you repay in outages, hiring, and cognitive overhead.
-5. 新颖性是一笔你在故障、招聘和认知负担中偿还的贷款。
+
 Treat your technology choices like an organization with a small “innovation token” budget. Spend one each time you adopt something materially non-standard. You can’t afford many.
-将你的技术选择像是一个拥有小额“创新代币”预算的组织一样对待。每次采用实质上非标准的做法时，花费一个代币。你负担不起很多。
 
 The punchline isn’t “never innovate.” It’s “innovate only where you’re uniquely paid to innovate.” Everything else should default to boring, because boring has known failure modes.
-重点不是“永不创新”。而是“只在你能独特地被支付去创新的地方创新”。其他所有事情都应该默认为无聊，因为无聊已知失败模式。
 
 The “best tool for the job” is often the “least-worst tool across many jobs”-because operating a zoo becomes the real tax.
+
+5. 创新是一笔贷款，悬在故障、招聘和认知负担之上。（化用达摩克里斯之剑）
+
+将你的技术选择视为一个拥有小额“创新代币”预算的组织：每次采用实质上非标准的做法时花费一个代币。花费太多会负担不起的。
+
+重点不是“永不创新”，而是“只在很有价值回报的地方创新”。其他所有事情都应该默认为无聊，因为无聊意味着已知并避开失败模式。
+
 “最适合这项工作的工具”往往是“在许多工作中最不糟糕的工具”——因为管理一个动物园才是真正的负担。
 
 6. Your code doesn’t advocate for you. People do.
-6. 你的代码不会替你说话。是人们替它说话。
+
 Early in my career, I believed great work would speak for itself. I was wrong. Code sits silently in a repository. Your manager mentions you in a meeting, or they don’t. A peer recommends you for a project, or someone else.
-在我职业生涯早期，我以为出色的工作会自己说话。我错了。代码静静地躺在仓库里。你的经理在会议上提到你，或者没有。一个同事推荐你参与项目，或者其他人被推荐。
 
 In large organizations, decisions get made in meetings you’re not invited to, using summaries you didn’t write, by people who have five minutes and twelve priorities. If no one can articulate your impact when you’re not in the room, your impact is effectively optional.
-在大公司里，决策是在你没被邀请的会议上做出的，使用你没写的总结，由那些只有五分钟和十二个优先事项的人来做。如果你不在场时，没有人能说明你的影响，那么你的影响实际上就是可选的。
 
 This isn’t strictly about self-promotion. It’s about making the value chain legible to everyone- including yourself.
-这并非严格意义上的自我宣传。它旨在让价值链对每个人——包括你自己——都清晰可见。
+
+6. 你的代码不会替你说话，是人们替它说话。
+
+在我职业生涯早期，我以为出色的工作自显。我错了。代码静静地躺在仓库里，是你的经理在会议上可能提到你、一个同事推荐你或其他人参与项目。
+
+在大公司里，决策是在你没被邀请的会议上做出的。与会者使用你没写的总结，他们还总是只有五分钟并且可怕到优先事项十二个。如果你不在场时没有人能替你阐明，那么你的影响实际上就是可有可无的（夸张一点点，直译可选的）。
+
+这并非严格意义上的自我宣传。它旨在让价值链对每个人都清晰可见，包括你自己。
 
 7. The best code is the code you never had to write.
-7. 最优秀的代码，是你从未需要编写的代码。
+
 We celebrate creation in engineering culture. Nobody gets promoted for deleting code, even though deletion often improves a system more than addition. Every line of code you don’t write is a line you never have to debug, maintain, or explain.
-我们在工程文化中庆祝创造。没有人会因为删除代码而得到晋升，尽管删除代码往往比添加代码更能改进系统。你每不写的一行代码，就是你永远不必调试、维护或解释的一行代码。
 
 Before you build, exhaust the question: “What would happen if we just… didn’t?” Sometimes the answer is “nothing bad,” and that’s your solution.
-在构建之前，彻底思考这个问题：“如果我们只是……不做什么会怎样？”有时答案是“不会发生坏事”，这就是你的解决方案。
 
 The problem isn’t that engineers can’t write code or use AI to do so. It’s that we’re so good at writing it that we forget to ask whether we should.
-问题不在于工程师不能写代码或使用 AI 来写。问题在于我们写得太好了，以至于忘记问我们是否应该写。
+
+7. 最优秀的代码，是你从不需要写的代码。
+
+我们在工程文化中庆祝创造。没有人会因为删除代码而得到晋升，尽管删除代码往往比添加更能优化系统。不需要写的每一行都是不必调试、维护或解释的（这省去了多少时间精力）。
+
+在构建之前，想透这个问题：“如果我们只是...不做，会怎样？”有时答案是“不会发生什么坏事”，然后你就得到了解决方案。
+
+
+问题不在于工程师不能写代码或使用 AI 来写。问题在于我们写得太好了，以至于忘记问自己是否应该写。
 
 8. At scale, even your bugs have users.
-8. 在大规模应用中，即使你的 bug 也有用户。
+
 With enough users, every observable behavior becomes a dependency - regardless of what you promised. Someone is scraping your API, automating your quirks, caching your bugs.
-只要有足够多的用户，每一个可观察的行为都会变成依赖——无论你承诺了什么。有人在抓取你的 API，自动化你的怪癖，缓存你的错误。
 
 This creates a career-level insight: you can’t treat compatibility work as “maintenance” and new features as “real work.” Compatibility is product.
-这创造了一个职业层面的洞察：你不能将兼容性工作视为“维护”，将新功能视为“真正的工作”。兼容性就是产品。
 
 Design your deprecations as migrations with time, tooling, and empathy. Most “API design” is actually “API retirement.”
-将你的弃用设计视为随时间推移、工具和同理心进行的迁移。大多数所谓的“API 设计”实际上是“API 退休”。
+
+8. 在大规模应用中，即使你的 bug 也有用户。（【这段似乎还是在说用户至上但聚焦到兼容性的工作强调可维护性？】
+
+只要有足够多的用户，每一个可观察的行为都会变成依赖——无论你承诺了什么。有人在抓取你的 API，自动化你的怪癖，缓存你的错误。
+
+这创造了一个职业层面的洞察：你不能将兼容性工作视为“维护”、将新功能视为“真正的工作”。兼容性就是产品。
+
+将你的弃用设计视为随时间、工具和同理心进行的迁移。大多数所谓的“API 设计”实际上是“API 退休”。
 
 9. Most “slow” teams are actually misaligned teams.
-9. 大多数所谓的“慢速”团队实际上是方向不一致的团队。
+
 When a project drags, the instinct is to blame execution: people aren’t working hard enough, the technology is wrong, there aren’t enough engineers. Usually none of that is the real problem.
-当一个项目进展缓慢时，本能的反应是责备执行层面：人们不够努力，技术选型错误，工程师数量不足。但通常这些都不是真正的问题。
 
 In large companies, teams are your unit of concurrency, but coordination costs grow geometrically as teams multiply. Most slowness is actually alignment failure - people building the wrong things, or the right things in incompatible ways.
-在大公司中，团队是并发的基本单位，但随着团队的增多，协调成本会呈几何级数增长。大多数的缓慢实际上是方向不一致的问题——人们正在构建错误的事情，或者以不兼容的方式构建正确的事情。
 
 Senior engineers spend more time clarifying direction, interfaces, and priorities than “writing code faster” because that’s where the actual bottleneck lives.
+
+9. 大多数所谓的“慢速”团队实际上是没有对齐的团队。
+   
+当一个项目进展缓慢时，本能的反应是责备执行层：人们不够努力，技术选型错误，工程师数量不足。但通常这些都不是真正的问题。
+
+在大公司中，团队是并发的基本单位，但随着团队的增多，协调成本会呈几何级数增长。大多数的缓慢实际上是方向不一致/对齐失败的问题——人们正在构建错误的事情，或者以不兼容的方式构建正确的事情。
+
 高级工程师花费更多时间澄清方向、接口和优先级，而不是“更快地编写代码”，因为真正的瓶颈就在于此。
 
 10. Focus on what you can control. Ignore what you can’t.
-10. 专注于你能控制的事情。忽略你不能控制的。
+
 In a large company, countless variables are outside your control - organizational changes, management decisions, market shifts, product pivots. Dwelling on these creates anxiety without agency.
-在一个大公司里，无数变量都超出了你的控制范围——组织变革、管理层决策、市场变化、产品转型。沉湎于这些只会带来无能为力的焦虑。
 
 The engineers who stay sane and effective zero in on their sphere of influence. You can’t control whether a reorg happens. You can control the quality of your work, how you respond, and what you learn. When faced with uncertainty, break problems into pieces and identify the specific actions available to you.
-那些保持理智和高效工作的工程师会专注于自己的影响范围。你无法控制重组是否发生，但你可以控制工作的质量、你的应对方式以及你学到的东西。面对不确定性时，将问题分解成小块，并确定你可以采取的具体行动。
 
 This isn’t passive acceptance but it is strategic focus. Energy spent on what you can’t change is energy stolen from what you can.
-这不是被动接受，而是战略聚焦。你把精力花在无法改变的事情上，就是从可以改变的事情上偷走了精力。
+
+10. 专注于你能控制的事情。忽略你不能控制的。
+
+在一个大公司里，无数变量都超出了你的控制范围——组织变革、管理层决策、市场变化、产品转型。沉湎于这些只会带来无能为力的焦虑。
+
+那些保持理智和高效工作的工程师会专注于自己的影响范围。你无法控制重组是否发生，但你可以控制工作的质量、你的应对方式以及你学到的东西。面对不确定性时，将问题分解成小块，并确定你可以采取的具体行动。
+
+这不是被动接受，而是战略聚焦。把精力花在无法改变的事情上，就是从可以改变的事情中偷走了精力。
 
 11. Abstractions don’t remove complexity. They move it to the day you’re on call.
 11. 抽象不会消除复杂性。它们将复杂性转移到了你值班的那个日子。
