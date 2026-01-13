@@ -4,46 +4,51 @@ author_profile: true
 title: "精读：AddyOsmani21lessons14years"
 date: 2026-01-11
 categories: [经验分享, 翻译]
-tags: [Engineer, , ]
+tags: [Engineer, Experience , ]
 excerpt: "探讨如何结合Tensor Train分解与LoRA技术优化Whisper模型，在Common Voice 15数据集上实现参数量压缩99.5%的同时保持识别准确率。"
 ---
 
 ## 背景
 
-偶然看到此文翻译觉得还是回归原文，精读后贴出翻译和一些个人思考。原文指路：https://addyosmani.com/blog/21-lessons/
+偶然看到此文翻译觉得还是回归原文，精读后贴出翻译（加入局部细节个人意译）和一些思考。考虑到作者语言习惯有刻意保持某种工程师对遣词的直白与简洁。原文指路：https://addyosmani.com/blog/21-lessons/
 
 ## 21 Lessons From 14 Years at Google
 ### January 3, 2026 
 
 When I joined Google ~14 years ago, I thought the job was about writing great code. I was partly right. But the longer I’ve stayed, the more I’ve realized that the engineers who thrive aren’t necessarily the best programmers - they’re the ones who’ve figured out how to navigate everything around the code: the people, the politics, the alignment, the ambiguity.
-14 年前当我加入谷歌时，我以为这份工作就是写好代码。我部分正确。但待得越久，我越意识到，那些茁壮成长的工程师未必是最佳程序员——他们懂得如何驾驭代码周围的一切：人际关系、政治因素、协同一致、模糊不清。
 
 These lessons are what I wish I’d known earlier. Some would have saved me months of frustration. Others took years to fully understand. None of them are about specific technologies - those change too fast to matter. They’re about the patterns that keep showing up, project after project, team after team.
-这些教训是我希望早点知道的东西。有些能让我节省数月的挫败感。另一些则花了我数年才能真正理解。它们都不是关于具体技术的——那些变化太快，不值得关注。它们是关于那些反复出现的模式，项目接项目，团队接团队。
 
 I’m sharing them because I’ve benefited enormously from engineers who did the same for me. Consider this my attempt to pay it forward.
-我分享它们，因为我从那些为我做同样事情的前辈工程师那里获益良多。请将这视为我传递善意的尝试。
+
+14 年前当我加入谷歌时，我以为这份工作就是写出好代码。我部分正确。但待得越久，我越意识到，那些茁壮成长的工程师未必是最佳程序员——他们懂得如何在代码周围游刃有余：人际关系、政治、协同一致和不确定性。
+这些教训是我希望早点知道的东西。有些能让我节省数月的挫败感，另一些则花了我数年才能真正理解。它们都不是关于具体技术的——那些变化太快，不值得关注。它们是关于那些在一个接一个项目和团队中反复出现的模式。
+我分享是因为我同样从前辈工程师那里获益良多，请将这视为我传递善意的尝试。
 
 1. The best engineers are obsessed with solving user problems.
-1. 最好的工程师都痴迷于解决用户问题。
+
 It’s seductive to fall in love with a technology and go looking for places to apply it. I’ve done it. Everyone has. But the engineers who create the most value work backwards: they become obsessed with understanding user problems deeply, and let solutions emerge from that understanding.
-沉溺于一种技术并寻找应用它的地方是诱人的。我这样做过，每个人也都这样做过。但创造最大价值的工程师是逆向工作的：他们痴迷于深入理解用户问题，并让解决方案从这种理解中产生。
 
 User obsession means spending time in support tickets, talking to users, watching users struggle, asking “why” until you hit bedrock. The engineer who truly understands the problem often finds that the elegant solution is simpler than anyone expected.
-痴迷于用户意味着花时间查看支持工单、与用户交谈、观察用户挣扎，不断问“为什么”直到触及根本。真正理解问题的工程师常常发现，优雅的解决方案比任何人预期的都要简单。
 
 The engineer who starts with a solution tends to build complexity in search of a justification.
-从解决方案出发的工程师往往在寻找理由的过程中构建复杂性。
+
+1. 最好的工程师都痴迷于解决用户问题。
+沉溺于一种技术并寻找应用它的地方是诱人的。我这样做过，像几乎每个人一样。但创造最大价值的工程师是逆向工作的：他们痴迷于深入理解用户问题，并让解决方案从这种理解中自然浮现。
+痴迷于用户意味着花时间查看支持工单、与用户交谈、观察用户的困扰，整个过程不断问“为什么”直到触及根本。真正理解问题的工程师常常发现，优雅的解决方案比任何人预期的都要简单。
+而从解决方案出发的工程师往往在寻找其合理性的过程中把问题越弄越复杂。
 
 2. Being right is cheap. Getting to right together is the real work.
-2. 正确是廉价的。一起到达正确才是真正的挑战。
+
 You can win every technical argument and lose the project. I’ve watched brilliant engineers accrue silent resentment by always being the smartest person in the room. The cost shows up later as “mysterious execution issues” and “strange resistance.”
-你可以赢得每一个技术争论，却输掉整个项目。我见过才华横溢的工程师因为总是成为房间里最聪明的人而积累沉默的怨恨。这种代价后来表现为“神秘的执行问题”和“奇怪的阻力”。
 
 The skill isn’t being right. It’s entering discussions to align on the problem, creating space for others, and remaining skeptical of your own certainty.
-这项技能不在于正确。而在于参与讨论以就问题达成一致，为他人创造空间，并对自己的确定性保持怀疑。
 
 Strong opinions, weakly held - not because you lack conviction, but because decisions made under uncertainty shouldn’t be welded to identity.
+
+2. 正确不值钱，一起做到才是真正的挑战。
+你可以赢得每一个技术争论却输掉整个项目。我见过才华横溢的工程师因为永远是房间里最聪明的人而（在房间其他人那儿）积累沉默的怨恨。这种代价后来表现为“神秘的执行问题”和“奇怪的阻力”。
+这项技能不在于正确，而在于参与讨论以就问题达成一致，为他人创造空间，并对自己的确定性保持怀疑。
 强烈的观点要弱化持有——不是因为缺乏信念，而是因为在不确定性下做出的决策不应与身份绑定。
 
 3. Bias towards action. Ship. You can edit a bad page, but you can’t edit a blank one.
