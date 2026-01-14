@@ -27,7 +27,7 @@ I’m sharing them because I’ve benefited enormously from engineers who did th
 
 这些教训是我希望早点知道的东西。有些能让我节省数月的挫败感，另一些则花了我数年才能真正理解。它们都不是关于具体技术的——那些变化太快，不值得关注。它们是关于那些在一个接一个项目和团队中反复出现的模式。
 
-我分享是因为我同样从前辈工程师那里获益良多，请将这视为我传递善意的尝试。
+我分享是因为我同样从前辈工程师那里获益良多，请将这视为我传递善意的尝试。<br>
 
 1\. The best engineers are obsessed with solving user problems.
 
@@ -43,7 +43,7 @@ The engineer who starts with a solution tends to build complexity in search of a
 
 痴迷于用户意味着花时间查看支持工单、与用户交谈、观察用户的困扰，整个过程不断问“为什么”直到触及根本。真正理解问题的工程师常常发现，优雅的解决方案比任何人预期的都要简单。
 
-而从解决方案出发的工程师往往在寻找其合理性的过程中把问题越弄越复杂。
+而从解决方案出发的工程师往往在寻找其合理性的过程中把问题越弄越复杂。<br>
 
 2\. Being right is cheap. Getting to right together is the real work.
 
@@ -59,7 +59,7 @@ Strong opinions, weakly held - not because you lack conviction, but because deci
 
 这项技能不在于正确，而在于参与讨论以就问题达成一致，为他人创造空间，并对自己的确定性保持怀疑。
 
-强烈的观点要弱化持有——不是因为缺乏信念，而是因为在不确定性下做出的决策不应与身份绑定。
+强烈的观点要弱化持有——不是因为缺乏信念，而是因为在不确定性下做出的决策不应与身份绑定。<br>
 
 3\. Bias towards action. Ship. You can edit a bad page, but you can’t edit a blank one.
 
@@ -75,7 +75,7 @@ Momentum creates clarity. Analysis paralysis creates nothing.
 
 先做，再做正确，然后做得更好。让难看的原型面对用户。写出混乱的第一版设计文档。发布让你略感尴尬的最小可行产品。比起一个月的理论辩论，你将从一周的真实反馈中学习到更多。
 
-势头创造清晰。分析瘫痪创造不了任何东西。
+势头创造清晰。分析瘫痪创造不了任何东西。<br>
 
 4\. Clarity is seniority. Cleverness is overhead.
 
@@ -91,7 +91,7 @@ Your code is a strategy memo to strangers who will maintain it at 2am during an 
 
 但软件工程是在你加入时间和其他程序员时发生的（即软件工程是时间和多程序员协作的产物）。在那个环境中，清晰不是一种风格偏好——它是运营风险降低。
 
-你的代码是一份给陌生人的策略备忘录，他们可能会在凌晨两点维护故障时使用它。要为了他们的理解而优化，而不是只为你的优雅。我最尊敬的那些高级工程师已经学会用清晰度换取聪明才智，每次。
+你的代码是一份给陌生人的策略备忘录，他们可能会在凌晨两点维护故障时使用它。要为了他们的理解而优化，而不是只为你的优雅。我最尊敬的那些高级工程师已经学会用清晰度换取聪明才智，每次。<br>
 
 5\. Novelty is a loan you repay in outages, hiring, and cognitive overhead.
 
@@ -107,7 +107,7 @@ The “best tool for the job” is often the “least-worst tool across many job
 
 重点不是“永不创新”，而是“只在很有价值回报的地方创新”。其他所有事情都应该默认为无聊，因为无聊意味着已知并避开失败模式。
 
-“最适合这项工作的工具”往往是“在许多工作中最不糟糕的工具”——因为管理一个动物园才是真正的负担。
+“最适合这项工作的工具”往往是“在许多工作中最不糟糕的工具”——因为管理一个动物园才是真正的负担。<br>
 
 6\. Your code doesn’t advocate for you. People do.
 
@@ -123,7 +123,7 @@ This isn’t strictly about self-promotion. It’s about making the value chain 
 
 在大公司里，决策是在你没被邀请的会议上做出的。与会者使用你没写的总结，他们还总是只有五分钟并且可怕到优先事项十二个。如果你不在场时没有人能替你阐明，那么你的影响实际上就是可有可无的（夸张一点点，直译可选的）。
 
-这并非严格意义上的自我宣传。它旨在让价值链对每个人都清晰可见，包括你自己。
+这并非严格意义上的自我宣传。它旨在让价值链对每个人都清晰可见，包括你自己。<br>
 
 7\. The best code is the code you never had to write.
 
@@ -140,7 +140,7 @@ The problem isn’t that engineers can’t write code or use AI to do so. It’s
 在构建之前，想透这个问题：“如果我们只是...不做，会怎样？”有时答案是“不会发生什么坏事”，然后你就得到了解决方案。
 
 
-问题不在于工程师不能写代码或使用 AI 来写。问题在于我们写得太好了，以至于忘记问自己是否应该写。
+问题不在于工程师不能写代码或使用 AI 来写。问题在于我们写得太好了，以至于忘记问自己是否应该写。<br>
 
 8\. At scale, even your bugs have users.
 
@@ -156,7 +156,7 @@ Design your deprecations as migrations with time, tooling, and empathy. Most “
 
 这创造了一个职业层面的洞察：你不能将兼容性工作视为“维护”、将新功能视为“真正的工作”。兼容性就是产品。
 
-将你的弃用设计视为随时间、工具和同理心进行的迁移。大多数所谓的“API 设计”实际上是“API 退休”。
+将你的弃用设计视为随时间、工具和同理心进行的迁移。大多数所谓的“API 设计”实际上是“API 退休”。<br>
 
 9\. Most “slow” teams are actually misaligned teams.
 
@@ -172,7 +172,7 @@ Senior engineers spend more time clarifying direction, interfaces, and prioritie
 
 在大公司中，团队是并发的基本单位，但随着团队的增多，协调成本会呈几何级数增长。大多数的缓慢实际上是方向不一致/对齐失败的问题——人们正在构建错误的事情，或者以不兼容的方式构建正确的事情。
 
-高级工程师花费更多时间澄清方向、接口和优先级，而不是“更快地编写代码”，因为真正的瓶颈就在于此。
+高级工程师花费更多时间澄清方向、接口和优先级，而不是“更快地编写代码”，因为真正的瓶颈就在于此。<br>
 
 10\. Focus on what you can control. Ignore what you can’t.
 
@@ -188,7 +188,7 @@ This isn’t passive acceptance but it is strategic focus. Energy spent on what 
 
 那些保持理智和高效工作的工程师会专注于自己的影响范围。你无法控制重组是否发生，但你可以控制工作的质量、你的应对方式以及你学到的东西。面对不确定性时，将问题分解成小块，并确定你可以采取的具体行动。
 
-这不是被动接受，而是战略聚焦。把精力花在无法改变的事情上，就是从可以改变的事情中偷走了精力。
+这不是被动接受，而是战略聚焦。把精力花在无法改变的事情上，就是从可以改变的事情中偷走了精力。<br>
 
 11\. Abstractions don’t remove complexity. They move it to the day you’re on call.
 
@@ -204,7 +204,7 @@ Use your stack. But keep a working model of its underlying failure modes.
 
 高级工程师即使在技术栈越来越高的同时，也在不断学习“更低层次”的东西。这不是出于怀旧，而是出于对抽象失效时凌晨三点独自面对系统的尊重。
 
-使用你的技术栈，但保持对其底层失效模式的可工作模型。
+使用你的技术栈，但保持对其底层失效模式的可工作模型。<br>
 
 12\. Writing forces clarity. The fastest way to learn something better is to try teaching it.
 
@@ -223,7 +223,7 @@ Teaching is debugging your own mental models.
 
 这不仅仅是关于慷慨分享知识。这是一种自私的学习技巧。如果你认为自己理解了某件事，试着用简单的语言解释它。你在解释时卡壳的地方，就是你理解不深的地方。
 
-教学是调试你自己的思维模型。
+教学是调试你自己的思维模型。<br>
 
 13\. The work that makes other work possible is priceless - and invisible.
 13\. 使其他工作成为可能的工作是无价的——而且是无形的。
@@ -245,7 +245,7 @@ Real alignment takes longer. You have to actually understand other perspectives,
 真正的对齐需要更长时间。你必须真正理解其他观点，纳入反馈，有时还需要公开改变自己的想法。
 
 The short-term feeling of being right is worth much less than the long-term reality of building things with willing collaborators.
-短期内感觉自己正确的感觉，远不如长期与愿意合作的伙伴一起建设事物的现实有价值。
+短期内感觉自己正确的感觉，远不如长期与愿意合作的伙伴一起建设事物的现实有价值。<br>
 
 15\. When a measure becomes a target, it stops measuring.
 
@@ -260,7 +260,7 @@ The senior move: respond to every metric request with a pair. One for speed. One
 
 如果你追踪代码行数，你会得到更多的代码行。如果你追踪速度，你会得到被夸大的估计。
 
-高级策略：对每一个指标请求都回应一对数据。一个关于速度，一个关于质量或风险。然后坚持解读趋势，而不是崇拜阈值。目标是洞察，而不是监控。
+高级策略：对每一个指标请求都回应一对数据。一个关于速度，一个关于质量或风险。然后坚持解读趋势，而不是崇拜阈值。目标是洞察，而不是监控。<br>
 
 16\. Admitting what you don’t know creates more safety than pretending you do.
 
@@ -270,7 +270,7 @@ I’ve seen teams where the most senior person never admitted confusion, and I�
 
 Model curiosity, and you get a team that actually learns.
 
-16\. 承认自己不知道比假装知道更能创造安全感。
+16\. 承认自己不知道比假装知道更能创造安全感。<br>
 
 那些说“我不知道”的高级工程师并不是在显示软弱——他们是在创造许可。当领导者承认不确定性时，它向其他人传递了一个信号：这个空间是安全的，其他人也可以这样做。另一种选择是一种每个人都假装理解直到问题直到爆发的（不良）文化。
 
@@ -288,7 +288,7 @@ Your job isn’t forever, but your network is. Approach it with curiosity and ge
 
 When the time comes to move on, it’s often relationships that open the door.
 
-17\. 你的社交网络比任何一份工作都要持久。
+17\. 你的社交网络比任何一份工作都要持久。<br>
 
 在我职业生涯早期，我专注于工作而忽视了社交网络。回首来看，这是一个错误。那些在公司内外都注重建立关系同事，数十年来都获得了回报。
 
@@ -296,7 +296,7 @@ When the time comes to move on, it’s often relationships that open the door.
 
 工作不是永恒的，但你的社交网络是。用好奇心和慷慨去对待它，而不是交易式的奔波。
 
-当是时候向前迈进时，往往是人际关系为你打开大门。
+当是时候向前迈进时，往往是人际关系为你打开大门。<br>
 
 18\. Most performance wins come from removing work, not adding cleverness.
 
@@ -312,7 +312,7 @@ Before you optimize, question whether the work should exist at all.
 
 删除不必要的工作几乎总是比更快地完成必要工作更有影响力。最快的代码是永远不会运行的代码。
 
-在优化之前，先质疑这项工作是否真的有必要存在。
+在优化之前，先质疑这项工作是否真的有必要存在。<br>
 
 19\. Process exists to reduce uncertainty, not to create paper trails.
 
@@ -328,7 +328,7 @@ And if people are spending more time documenting their work than doing it, somet
 
 如果你无法解释一个流程如何降低风险或增加清晰度，那它很可能只是额外的负担。
 
-如果人们花在记录工作上的时间比实际工作的时间还多，那说明出了严重的问题。
+如果人们花在记录工作上的时间比实际工作的时间还多，那说明出了严重的问题。<br>
 
 20\. Eventually, time becomes worth more than money. Act accordingly.
 
@@ -344,7 +344,7 @@ The answer isn’t “don’t work hard.” It’s “know what you’re trading
 
 我见过一些高级工程师为了追求下一个晋升级别，优化那几个百分点的补偿而过度劳累。其中一些人得到了晋升，而大多数在之后都怀疑他们所放弃的东西是否值得。
 
-答案不是“不要努力工作”，而是“了解你在换什么，并有意识地做出交易。”
+答案不是“不要努力工作”，而是“了解你在换什么，并有意识地做出交易。”<br>
 
 21\. There are no shortcuts, but there is compounding.
 
@@ -360,7 +360,7 @@ The engineer who treats their career as compound interest, not lottery tickets, 
 
 但这里有一些希望：只有创造新的选项时学习才会产生复利效应，而不仅仅是新的琐碎。写作——不是为了吸引人，而是为了清晰。构建可重用的基础元素。将伤痕（失败经验）收集成操作手册。
 
-将职业生涯视为复利而非彩票的工程师往往能取得更大的进步。
+将职业生涯视为复利而非彩票的工程师往往能取得更大的进步。<br>
 
 
 A final thought  
