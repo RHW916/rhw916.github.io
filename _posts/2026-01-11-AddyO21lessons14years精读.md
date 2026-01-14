@@ -10,9 +10,9 @@ excerpt: "探讨如何结合Tensor Train分解与LoRA技术优化Whisper模型�
 
 ## 背景
 
-偶然看到此文翻译觉得还是回归原文，精读后贴出翻译（插件GLM机翻+加入局部细节个人意译）和一些思考。考虑到作者语言习惯有刻意保持某种工程师对遣词的直白与简洁。原文指路：https://addyosmani.com/blog/21-lessons/
+偶然看到此文翻译觉得还是回归原文，精读后贴出翻译（插件GLM机翻+加入局部细节个人意译）和一些思考。考虑到作者语言习惯有刻意保持某种工程师对遣词的直白与简洁。原文指路：[AddyOsmani](https://addyosmani.com/blog/21-lessons/)
+插件指路： [沉浸式翻译](https://microsoftedge.microsoft.com/addons/detail/%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%BF%BB%E8%AF%91-%E7%BD%91%E9%A1%B5%E7%BF%BB%E8%AF%91%E6%8F%92%E4%BB%B6-pdf%E7%BF%BB%E8%AF%91-/amkbmndfnliijdhojkpoglbnaaahippg "Edge拓展插件")
 
-插件指路：沉浸式翻译 https://microsoftedge.microsoft.com/addons/detail/%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%BF%BB%E8%AF%91-%E7%BD%91%E9%A1%B5%E7%BF%BB%E8%AF%91%E6%8F%92%E4%BB%B6-pdf%E7%BF%BB%E8%AF%91-/amkbmndfnliijdhojkpoglbnaaahippg
 
 ## 21 Lessons From 14 Years at Google
 ### January 3, 2026 
@@ -29,7 +29,7 @@ I’m sharing them because I’ve benefited enormously from engineers who did th
 
 我分享是因为我同样从前辈工程师那里获益良多，请将这视为我传递善意的尝试。
 
-1. The best engineers are obsessed with solving user problems.
+1\. The best engineers are obsessed with solving user problems.
 
 It’s seductive to fall in love with a technology and go looking for places to apply it. I’ve done it. Everyone has. But the engineers who create the most value work backwards: they become obsessed with understanding user problems deeply, and let solutions emerge from that understanding.
 
@@ -45,7 +45,7 @@ The engineer who starts with a solution tends to build complexity in search of a
 
 而从解决方案出发的工程师往往在寻找其合理性的过程中把问题越弄越复杂。
 
-2. Being right is cheap. Getting to right together is the real work.
+2\. Being right is cheap. Getting to right together is the real work.
 
 You can win every technical argument and lose the project. I’ve watched brilliant engineers accrue silent resentment by always being the smartest person in the room. The cost shows up later as “mysterious execution issues” and “strange resistance.”
 
