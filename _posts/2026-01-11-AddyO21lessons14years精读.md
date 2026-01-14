@@ -226,25 +226,35 @@ Teaching is debugging your own mental models.
 教学是调试你自己的思维模型。<br>
 
 13\. The work that makes other work possible is priceless - and invisible.
-13\. 使其他工作成为可能的工作是无价的——而且是无形的。
+
 Glue work - documentation, onboarding, cross-team coordination, process improvement - is vital. But if you do it unconsciously, it can stall your technical trajectory and burn you out. The trap is doing it as “helpfulness” rather than treating it as deliberate, bounded, visible impact.
+
+13\. 使其他工作获得可能性的工作是无价的——而且是无形的。
+
 粘合工作——文档编写、入职培训、跨团队协调、流程改进——至关重要。但如果你无意识地做这些工作，它可能会阻碍你的技术发展路线，并让你筋疲力尽。陷阱在于将其视为“乐于助人”，而不是将其当作有目的、有边界、有可见影响力的工作来对待。
 
 Timebox it. Rotate it. Turn it into artifacts: docs, templates, automation. And make it legible as impact, not as personality trait.
 设定时间限制。轮换角色。将其转化为成果：文档、模板、自动化。并使其以影响而非个性特征的方式呈现可见性。
 
+无价且无形是职业生涯中危险的组合。
+
 Priceless and invisible is a dangerous combination for your career.
-无价且无形是您职业生涯中危险的组合。
+
 
 14\. If you win every debate, you’re probably accumulating silent resistance.
-14\. 如果你赢得每一场辩论，你可能正在积累沉默的抵制。
+
 I’ve learned to be suspicious of my own certainty. When I “win” too easily, something is usually wrong. People stop fighting you not because you’ve convinced them, but because they’ve given up trying - and they’ll express that disagreement in execution, not meetings.
-我学会了怀疑自己的确定性。当我轻易“获胜”时，通常有什么不对劲。人们不再与你争辩，不是因为你说服了他们，而是因为他们已经放弃尝试——他们会在执行中而非会议上表达这种分歧。
 
 Real alignment takes longer. You have to actually understand other perspectives, incorporate feedback, and sometimes change your mind publicly.
-真正的对齐需要更长时间。你必须真正理解其他观点，纳入反馈，有时还需要公开改变自己的想法。
 
 The short-term feeling of being right is worth much less than the long-term reality of building things with willing collaborators.
+
+14\. 如果你赢得每一场辩论，你可能正在积累沉默的抵制。【似乎和重合了】
+
+我学会了怀疑自己的确定性。当我轻易“获胜”时，通常有什么不对劲。人们不再与你争辩，不是因为你说服了他们，而是因为他们已经放弃尝试——他们会在执行中而非会议上表达这种分歧。
+
+真正的对齐需要更长时间。你必须真正理解其他观点，纳入反馈，有时还需要公开改变自己的想法。
+
 短期内感觉自己正确的感觉，远不如长期与愿意合作的伙伴一起建设事物的现实有价值。<br>
 
 15\. When a measure becomes a target, it stops measuring.
@@ -254,6 +264,7 @@ Every metric you expose to management will eventually be gamed. Not through mali
 If you track lines of code, you’ll get more lines. If you track velocity, you’ll get inflated estimates.
 
 The senior move: respond to every metric request with a pair. One for speed. One for quality or risk. Then insist on interpreting trends, not worshiping thresholds. The goal is insight, not surveillance.
+
 15\. 当一个衡量标准变成目标时，它就停止衡量了。
 
 你向管理层公开的每一个指标最终都会被操纵。不是出于恶意，而是因为人类会优化被衡量的东西。
